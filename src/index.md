@@ -20,7 +20,7 @@ hero:
       link: /guide/intro
     - theme: alt
       text:  GitHub
-      link: https://github.com/rcy1314/noisework-docs
+      link: https://github.com/rcy1314/noisework
     - theme: alt
       text: 在线预览
       link: https://www.noisework.cn
