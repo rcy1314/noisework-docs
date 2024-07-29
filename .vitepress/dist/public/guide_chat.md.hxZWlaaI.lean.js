@@ -1,0 +1,1 @@
+import{_ as a,c as t,o as n,a2 as o}from"./chunks/framework.DQS5QPof.js";const h=JSON.parse('{"title":"聊天室介绍","description":"","frontmatter":{},"headers":[],"relativePath":"guide/chat.md","filePath":"guide/chat.md"}'),s={name:"guide/chat.md"},e=o("",11),p=[e];function u(i,l,c,r,d,q){return n(),t("div",null,p)}const b=a(s,[["render",u]]);export{h as __pageData,b as default};
