@@ -236,7 +236,7 @@ export default defineConfig({
   themeConfig: {
     logo: '/favicon.png',
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/rcy1314/noisework' }
+      { icon: 'github', link: 'https://github.com/rcy1314/noisework-docs' }
     ],
     
   footer: {
