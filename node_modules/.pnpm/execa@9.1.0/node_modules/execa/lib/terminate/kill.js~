@@ -1,0 +1,120 @@
+import os from 'node:os';
+import {setTimeout} from 'node:timers/promises';
+import {isErrorInstance} from '../return/final-error.js';
+import {createDeferred} from '../utils/deferred.js';
+
+// Normalize the `forceKillAfterDelay` option
+export const normalizeForceKillAfterDelay = forceKillAfterDelay => {
+	if (forceKillAfterDelay === false) {
+		return forceKillAfterDelay;
+	}
+
+	if (forceKillAfterDelay === true) {
+		return DEFAULT_FORCE_KILL_TIMEOUT;
+	}
+
+	if (!Number.isFinite(forceKillAfterDelay) || forceKillAfterDelay < 0) {
+		throw new TypeError(`Expected the \`forceKillAfterDelay\` option to be a non-negative integer, got \`${forceKillAfterDelay}\` (${typeof forceKillAfterDelay})`);
+	}
+
+	return forceKillAfterDelay;
+};
+
+const DEFAULT_FORCE_KILL_TIMEOUT = 1000 * 5;
+
+// Monkey-patches `subprocess.kill()` to add `forceKillAfterDelay` behavior and `.kill(error)`
+export const setKillMethod = (subprocess, options, controller) => {
+	const onInternalError = createDeferred();
+	subprocess.kill = subprocessKill.bind(undefined, {
+		kill: subprocess.kill.bind(subprocess),
+		options,
+		onInternalError,
+		controller,
+	});
+	return onInternalError;
+};
+
+const subprocessKill = (
+	{kill, options: {forceKillAfterDelay, killSignal}, onInternalError, controller},
+	signalOrError,
+	errorArgument,
+) => {
+	const {signal, error} = parseKillArguments(signalOrError, errorArgument, killSignal);
+<<<<<<< HEAD
+	emitKillError(error, onInternalError);
+	const killResult = kill(signal);
+=======
+	emitKillError(subprocess, error);
+	const killResult = safeKill(kill, signal);
+>>>>>>> f8333bec (Debugging)
+	setKillTimeout({
+		kill,
+		signal,
+		forceKillAfterDelay,
+		killSignal,
+		killResult,
+		controller,
+	});
+	return killResult;
+};
+
+const safeKill = (kill, signal) => {
+	try {
+		return kill(signal);
+	} catch (error) {
+		console.log('THROWING', {error});
+		throw error;
+	}
+};
+
+const parseKillArguments = (signalOrError, errorArgument, killSignal) => {
+	const [signal = killSignal, error] = isErrorInstance(signalOrError)
+		? [undefined, signalOrError]
+		: [signalOrError, errorArgument];
+
+	if (typeof signal !== 'string' && typeof signal !== 'number') {
+		throw new TypeError(`The first argument must be an error instance or a signal name string/number: ${signal}`);
+	}
+
+	if (error !== undefined && !isErrorInstance(error)) {
+		throw new TypeError(`The second argument is optional. If specified, it must be an error instance: ${error}`);
+	}
+
+	return {signal, error};
+};
+
+// Fails right away when calling `subprocess.kill(error)`.
+// Does not wait for actual signal termination.
+// Uses a deferred promise instead of the `error` event on the subprocess, as this is less intrusive.
+const emitKillError = (error, onInternalError) => {
+	if (error !== undefined) {
+		onInternalError.reject(error);
+	}
+};
+
+const setKillTimeout = async ({kill, signal, forceKillAfterDelay, killSignal, killResult, controller}) => {
+	if (!shouldForceKill(signal, forceKillAfterDelay, killSignal, killResult)) {
+		return;
+	}
+
+	try {
+		await setTimeout(forceKillAfterDelay, undefined, {signal: controller.signal});
+		kill('SIGKILL');
+	} catch {}
+};
+
+const shouldForceKill = (signal, forceKillAfterDelay, killSignal, killResult) =>
+	normalizeSignal(signal) === normalizeSignal(killSignal)
+	&& forceKillAfterDelay !== false
+	&& killResult;
+
+const normalizeSignal = signal => typeof signal === 'string'
+	? os.constants.signals[signal.toUpperCase()]
+	: signal;
+
+// Calling `subprocess.kill()` on a process that has already exited emits an `error` event on Windows.
+// However, it does not do it on Unix. This ignores the error to make it cross-platform.
+// `subprocess.kill()` returns `false` in both cases.
+export const isRepeatKillError = error => error instanceof Error
+	&& error.syscall === 'kill'
+	&& error.code === 'EPERM';

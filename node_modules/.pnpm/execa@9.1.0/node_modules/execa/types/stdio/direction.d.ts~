@@ -1,0 +1,18 @@
+<<<<<<< HEAD
+import type {CommonOptions} from '../arguments/options';
+import type {StdinOptionCommon, StdoutStderrOptionCommon, StdioOptionCommon} from './type';
+import type {FdStdioArrayOption} from './option';
+=======
+import type {CommonOptions} from '../arguments/options.js';
+import type {IncludesSome} from '../utils.js';
+import type {StdioSingleOptionItems, InputStdioOption} from './type.js';
+import type {FdStdioArrayOption} from './option.js';
+>>>>>>> 1dc53d95 (Fix complexity bug with types)
+
+// Whether `result.stdio[FdNumber]` is an input stream
+export type IsInputFd<
+	FdNumber extends string,
+	OptionsType extends CommonOptions = CommonOptions,
+> = FdNumber extends '0'
+	? true
+	: IncludesSome<StdioSingleOptionItems<FdStdioArrayOption<FdNumber, OptionsType>>, InputStdioOption>;

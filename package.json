@@ -1,0 +1,43 @@
+{
+  "name": "NOISE主页配置文档",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "NOISE主页配置文档",
+  "author": {
+    "name": "NOISE",
+    "email": "1129159201@qq.com",
+    "url": "https://github.com/rcy1314"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/rcy1314",
+  "repository": {
+    "url": "https://github.com/rcy1314/noisework.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rcy1314/noisework/issues"
+  },
+  "engines": {
+    "node": ">=18.12.0",
+    "pnpm": ">=8.7.0"
+  },
+  "scripts": {
+    "build": "vitepress build",
+    "cleanup": "soy cleanup",
+    "commit": "soy git-commit",
+    "dev": "vitepress dev --port 1026",
+    "lint": "eslint . --fix",
+    "preview": "vite preview",
+    "release": "soy release",
+    "serve": "vitepress serve",
+    "typecheck": "vue-tsc --noEmit --skipLibCheck",
+    "update-pkg": "soy ncu"
+  },
+  "devDependencies": {
+    "@soybeanjs/cli": "1.0.19",
+    "@soybeanjs/eslint-config": "1.3.7",
+    "@types/node": "20.14.11",
+    "eslint": "9.7.0",
+    "typescript": "5.5.3",
+    "vitepress": "1.3.1"
+  }
+}
