@@ -1,6 +1,6 @@
 # 每日60秒读世界
 
-
+![6666](https://jsd.cdn.noisework.cn/gh/rcy1314/tuchuang@main/uPic/6666.png)
 
 该组件是使用fetch请求api并对响应的数据进行定制化处理
 
