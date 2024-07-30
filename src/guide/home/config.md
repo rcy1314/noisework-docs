@@ -68,6 +68,8 @@ body {cursor:url(https://cdn.jsdelivr.net/gh/moezx/cdn@3.1.9/img/Sakura/cursor/n
 
 另外，手机尺寸下做了界面定制修改
 
+![home-2](https://jsd.cdn.noisework.cn/gh/rcy1314/tuchuang@main/uPic/home-2.png)
+
 ## 核心
 
 核心文件为home-root.css、home-style.css、home-script.js
