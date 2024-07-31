@@ -23,7 +23,7 @@ css代码
       position: fixed;
       top: 15px;
       left: 10px;
-      z-index: 199000;
+      z-index: 999;
       width: 50px;
       height: 50px;
       background-color: #232730f5; /* 方块按钮的背景颜色 */
