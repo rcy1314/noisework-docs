@@ -41,6 +41,14 @@ export default defineConfig({
               {
                 text: '我的Star列表',
                 link: 'https://rcy1314.github.io/some-stars/'
+              },
+              {
+                text: '优惠手机卡渠道1',
+                link: 'https://simhaoka.com/phone/index?id=A7BA17EFD6DC47F6826F0C67B898725A'
+              },
+              {
+                text: '优惠手机卡渠道2',
+                link: 'https://hk.yunhaoka.cn/#/pages/micro_store/index?agent_id=422648'
               }
             ]
           }
