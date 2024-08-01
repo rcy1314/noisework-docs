@@ -260,7 +260,7 @@
             if (res1[0][0] == 1) {
                 print(command['douyin']['help'], 'message');
             } else {
-                var url = 'https://douyin.wtf/api/hybrid/video_data?url=' + res1[1][0];
+                var url = 'https://api.pearktrue.cn/api/video/douyin?url=' + res1[1][0];
                 var fetchUrl = url; // 保存url
                 print('正在获取抖音视频: ' + url);
                 fetch(fetchUrl, {
@@ -314,4 +314,6 @@
 
 ## 注意
 
-原本我添加的抖音去水印为个人部署PHP版本js请求封装的api，目前已失效，如果你还想去实现可以再自建API请求来完成。
+抖音去水印API来自[PEAR API](https://api.pearktrue.cn/info?id=254)
+
+如果失效请自行更换
