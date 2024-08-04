@@ -54,3 +54,16 @@ https://www.cbox.ws/
 })();
 ```
 
+
+
+如果不想使用该聊天室可以**删除html中的代码**
+
+## 嵌入AI对话框
+
+这里建议使用Dify来嵌入到页面
+
+DIFY：https://cloud.dify.ai
+
+![1722767503362](https://jsd.cdn.noisework.cn/gh/rcy1314/tuchuang@main/uPic/1722767503362.png)
+
+在应用界面创建应用APP后，选择发布，可选择嵌入页面的样式
