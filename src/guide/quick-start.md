@@ -22,7 +22,7 @@ git clone https://github.com/rcy1314/noisework
 
 ------
 
-🚀请留意侧边导航栏或点击下方
+🌈请留意侧边导航栏或点击下方
 
 ------
 
