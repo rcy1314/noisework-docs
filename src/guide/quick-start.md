@@ -98,3 +98,7 @@ git clone https://github.com/rcy1314/noisework
 ### 右键菜单
 
 [配置](https://docs.noisework.cn/guide/right.html)
+
+
+
+</details>
