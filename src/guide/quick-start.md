@@ -22,9 +22,12 @@ git clone https://github.com/rcy1314/noisework
 
 ------
 
-==鉴于某些朋友不知道查看侧边导航栏及查看完整文档==请留意侧边导航栏或点击下方
+🚀请留意侧边导航栏或点击下方
 
 ------
+
+<details>
+<summary>✅ 文档导航【点击展开】</summary>
 
 ### index首页
 
