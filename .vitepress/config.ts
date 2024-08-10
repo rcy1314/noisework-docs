@@ -11,6 +11,9 @@ export default defineConfig({
         footer: {
           copyright: 'Copyright © 2024 NOISE'
         },
+        search: {
+          provider: 'local'
+        },
         nav: [
           { text: '指引', link: '/guide/intro', activeMatch: '/guide/' },
           { text: '常见问题', link: '/faq/', activeMatch: '/faq/' },
