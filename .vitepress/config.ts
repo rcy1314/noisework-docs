@@ -8,12 +8,6 @@ export default defineConfig({
       title: 'NOISE主页配置文档',
       description: '无限多模式个性化个人主页引导页模版',
       themeConfig: {
-        footer: {
-          copyright: 'Copyright © 2024 NOISE'
-        },
-        search: {
-          provider: 'local'
-        },
         nav: [
           { text: '指引', link: '/guide/intro', activeMatch: '/guide/' },
           { text: '常见问题', link: '/faq/', activeMatch: '/faq/' },
@@ -249,7 +243,9 @@ export default defineConfig({
     socialLinks: [
       { icon: 'github', link: 'https://github.com/rcy1314/noisework-docs' }
     ],
-    
+    search: {
+      provider: 'local'
+    },
   footer: {
       copyright: 'Copyright © 204 NOISE'
     }
