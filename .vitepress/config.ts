@@ -250,7 +250,7 @@ export default defineConfig({
       prev: '上一页',
       next: '下一页'
     },
-    outlineTitle: '这一页',
+    outlineTitle: '页面导航',
   footer: {
       copyright: 'Copyright © 204 NOISE'
     }
