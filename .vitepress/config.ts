@@ -158,6 +158,10 @@ export default defineConfig({
                   link: '/guide/home/maomao'
                 },
                 {
+                  text: '视频播放组件',
+                  link: '/guide/home/video'
+                },
+                {
                   text: '轮播相册',
                   link: '/guide/home/photo'
                 },
