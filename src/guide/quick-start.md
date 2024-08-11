@@ -75,6 +75,8 @@ git clone https://github.com/rcy1314/noisework
 
 [躲猫猫](https://docs.noisework.cn/guide/home/maomao.html)
 
+[视频播放组件](https://docs.noisework.cn/guide/home/video.html)
+
 [轮播相册](https://docs.noisework.cn/guide/home/photo.html)
 
 [手机页导航](https://docs.noisework.cn/guide/home/nav.html)
