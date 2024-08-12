@@ -23,6 +23,21 @@ https://www.cbox.ws/
 
 其中3-3523748-9k93aT为我个人的id，如果你要引入请改为你自己的
 
+请前往https://www.cbox.ws 官网后登录你的账户，新建一个聊天室并按你自己的喜好调整外观后点击菜单中的Publish选项，找到你的代码后复制到网站中
+
+![1](https://jsd.cdn.noisework.cn/gh/rcy1314/tuchuang@main/uPic/1723460304737.png)
+
+
+
+<details>
+<summary>✅ 【点击展开】</summary>
+
+
+
+![](https://jsd.cdn.noisework.cn/gh/rcy1314/tuchuang@main/uPic/1723460287387.png)
+
+</details>
+
 引入的js为emb.js
 
 ```
