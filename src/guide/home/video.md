@@ -332,8 +332,6 @@ Home页直接引入代码
 </html>
 ```
 
-修改来源：https://github.com/rcqed/Bili-Fav-Player
-
 ### b站收藏说明
 
 
