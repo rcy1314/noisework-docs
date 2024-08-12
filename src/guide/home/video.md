@@ -2,6 +2,8 @@
 
 ## 一般常规视频引入
 
+![](https://jsd.cdn.noisework.cn/gh/rcy1314/tuchuang@main/uPic/1723432389059.png)
+
 ![1723362631905](https://jsd.cdn.noisework.cn/gh/rcy1314/tuchuang@main/uPic/1723362631905.png)
 
 HTML中
@@ -275,3 +277,7 @@ Home页引入代码
 ![1723367963587](https://jsd.cdn.noisework.cn/gh/rcy1314/tuchuang@main/uPic/1723367963587.png)
 
 右下角的按钮功能为“下一个视频”
+
+## 注意
+
+b站这个API容易抽风，官方似乎一直打，如果有更稳定的API时你可以替换掉上面的代码中的API
