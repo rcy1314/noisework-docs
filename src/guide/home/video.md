@@ -11,7 +11,7 @@ HTML中
 ```
 <!-- 视频播放 -->
 <div class="left-div left-time">
-	<ul id="line1">
+	<ul id="line2">
 	  <div class="container">
 		<!-- 视频容器 -->
 		<div id="video-container">
