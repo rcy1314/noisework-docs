@@ -7,16 +7,14 @@
 HTML中
 
 ```
- <!-- 随机视频 -->
+<!-- 视频播放 -->
 <div class="left-div left-time">
 	<ul id="line1">
 	  <div class="container">
 		<!-- 视频容器 -->
 		<div id="video-container">
-		  <!-- 封面图片 -->
-		  <img id="video-cover" src="https://jsd.cdn.noisework.cn/gh/rcy1314/tuchuang@main/uPic/pp2pa.jpeg" width="172" height="auto" alt="封面" onclick="playVideo()">
 		  <!-- 视频元素 -->
-		  <video id="random-video" width="172" height="auto" controls style="display:none;">
+		  <video id="random-video" width="100%" height="auto" controls>
 			<source src="视频链接" type="video/mp4">
 			您的浏览器不支持视频标签。
 		  </video>
@@ -25,81 +23,110 @@ HTML中
 		<div id="control-buttons">
 		  <button onclick="prevVideo()" style="font-size:11px;">上一个</button>
 		  <button id="play-pause-btn" onclick="togglePlay()" style="font-size:11px;">播放/暂停</button>
-		  <button onclick="nextVideo()" style="font-size:11px; ">下一个</button>
+		  <button onclick="nextVideo()" style="font-size:11px;">下一个</button>
 		</div>
 	  </div>
 	</ul>
   </div>
-  <!-- 随机视频结束 -->
+<!-- 视频播放结束 -->
 ```
 
 css代码
 
 ```
+ /* 视频组件效果 */
 /* 引入的随机视频组件按钮 */
- #control-buttons {
+#control-buttons {
     text-align: center;
-    margin-top: 10px; /* 根据需要调整间距 */
+    margin-top: 6px; /* 根据需要调整间距 */
   }
   
   #control-buttons button {
     margin: 0 5px; /* 根据需要调整按钮间距 */
+  }
+/* 基本样式 */
+#video-container {
+    width: 100%;
+    max-width: 172px; /* 最大宽度，可根据需要调整 */
+  }
+  
+  /* 手机屏幕尺寸下的样式 */
+  @media only screen and (max-width: 600px) {
+    #video-container, #random-video {
+      width: 100%;
+      max-width: 100%; /* 在小屏幕上，视频容器和视频元素宽度为100% */
+    }
   }
 ```
 
 JS代码
 
 ```
-//随机视频
-var videos = ["https://15799848.s21v.faiusr.com/58/ABUIABA6GAAg9qiM5gUo-tns8Qc.mp4", "https://15799848.s21v.faiusr.com/58/ABUIABA6GAAgwv_h7QUolM7fswM.mp4", "视频链接3"]; // 视频链接数组
+// 视频播放组件
+var videos = [
+    "https://jsd.cdn.noisework.cn/gh/rcy1314/tuchuang@main/uPic/f83b646a4cee41e588ca023e2a114e2f.mp4",
+    "https://jsd.cdn.noisework.cn/gh/rcy1314/tuchuang@main/uPic/bc6473e95d7f4bd1ba2f91d1cf632dfe.mp4",
+    
+    "视频链接3"
+];  // 视频链接数组
 var currentVideoIndex = 0; // 当前视频索引
 
 // 播放视频
 function playVideo() {
-  var video = document.getElementById("random-video");
-  var cover = document.getElementById("video-cover");
-  video.style.display = "block";
-  cover.style.display = "none";
-  video.play();
+    var video = document.getElementById("random-video");
+    video.play();
 }
 
 // 切换播放/暂停
 function togglePlay() {
-  var video = document.getElementById("random-video");
-  if (video.paused) {
-    video.play();
-    document.getElementById("play-pause-btn").innerText = "暂停";
-  } else {
-    video.pause();
-    document.getElementById("play-pause-btn").innerText = "播放";
-  }
+    var video = document.getElementById("random-video");
+    if (video.paused) {
+        video.play();
+    } else {
+        video.pause();
+    }
 }
 
-// 上一个视频
-function prevVideo() {
-  currentVideoIndex = (currentVideoIndex - 1 + videos.length) % videos.length;
-  updateVideo();
+// 随机选择一个视频
+function randomVideo() {
+    currentVideoIndex = Math.floor(Math.random() * videos.length);
+    updateVideo();
 }
 
-// 下一个视频
+// 播放下一个视频
 function nextVideo() {
-  currentVideoIndex = (currentVideoIndex + 1) % videos.length;
-  updateVideo();
+    currentVideoIndex = (currentVideoIndex + 1) % videos.length;
+    updateVideo();
+    playVideo();
+}
+
+// 播放上一个视频
+function prevVideo() {
+    currentVideoIndex = (currentVideoIndex - 1 + videos.length) % videos.length;
+    updateVideo();
+    playVideo();
 }
 
 // 更新视频
 function updateVideo() {
-  var video = document.getElementById("random-video");
-  var cover = document.getElementById("video-cover");
-  video.src = videos[currentVideoIndex];
-  cover.style.display = "block";
-  video.style.display = "none";
-  video.load();
+    var video = document.getElementById("random-video");
+    video.src = videos[currentVideoIndex];
+    video.load();
 }
 
-// 初始化
-updateVideo();
+// 监听视频错误事件，自动跳过失效视频
+document.getElementById("random-video").addEventListener('error', function() {
+    console.log("视频加载失败，尝试下一个视频");
+    nextVideo(); // 直接调用nextVideo()来尝试下一个视频
+});
 
+// 监听视频结束事件，自动播放下一个视频
+document.getElementById("random-video").addEventListener('ended', function() {
+    nextVideo(); // 直接调用nextVideo()来播放下一个视频
+});
+
+// 初始化，随机选择一个视频进行播放
+randomVideo();
 
 ```
 
