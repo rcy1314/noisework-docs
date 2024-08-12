@@ -2,9 +2,9 @@
 
 ## 一般常规视频引入
 
-![](https://jsd.cdn.noisework.cn/gh/rcy1314/tuchuang@main/uPic/1723432389059.png)
+![](https://jsd.cdn.noisework.cn/gh/rcy1314/tuchuang@main/uPic/1723434879690.png)
 
-![1723362631905](https://jsd.cdn.noisework.cn/gh/rcy1314/tuchuang@main/uPic/1723362631905.png)
+
 
 HTML中
 
