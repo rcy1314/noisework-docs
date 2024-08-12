@@ -2,7 +2,7 @@
 
 ## 一般常规视频引入
 
-![](https://jsd.cdn.noisework.cn/gh/rcy1314/tuchuang@main/uPic/1723434879690.png)
+![1729308652](https://jsd.cdn.noisework.cn/gh/rcy1314/tuchuang@main/uPic/1729308652.png)
 
 
 
@@ -160,7 +160,7 @@ randomVideo();
 
 ## b站收藏夹视频
 
-![](https://jsd.cdn.noisework.cn/gh/rcy1314/tuchuang@main/uPic/1723367090207.png)
+![1723449801561](https://jsd.cdn.noisework.cn/gh/rcy1314/tuchuang@main/uPic/1723449801561.png)
 
 这里我们使用嵌入页面的形式来引入
 
