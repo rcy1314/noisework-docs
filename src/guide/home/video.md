@@ -101,7 +101,20 @@ function togglePlay() {
         video.pause();
     }
 }
+// 获取视频元素和播放/暂停按钮
+  var video = document.getElementById("random-video");
+  var playPauseBtn = document.getElementById("play-pause-btn");
 
+  // 切换播放和暂停的函数
+  function togglePlay() {
+    if (video.paused || video.ended) {
+      video.play();
+      playPauseBtn.textContent = "⏸"; // 播放时显示暂停图标
+    } else {
+      video.pause();
+      playPauseBtn.textContent = "▶"; // 暂停时显示播放图标
+    }
+  }
 // 随机选择一个视频
 function randomVideo() {
     currentVideoIndex = Math.floor(Math.random() * videos.length);
@@ -155,7 +168,7 @@ randomVideo();
 
 
 
-Home页引入代码
+Home页直接引入代码
 
 ```
 <!-- B站收藏-->
@@ -173,7 +186,7 @@ Home页引入代码
 
 
 
-这里我把要引入链接页面改为了我自己的链接，方便后续更改代码效果，你也可以本地化引入
+这里我把要引入链接页面改为了我自己的链接【你可以仅修改id】，方便后续更改代码效果，你也可以本地化引入
 
 本地化引入的html为
 
@@ -193,6 +206,15 @@ Home页引入代码
             overflow: hidden;
             height: 100%;
         }
+        .center-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 15px; /* 将字体大小调整为15像素 */
+    display: none; /* 默认隐藏 */
+}
 
         iframe {
             width: 100%;
@@ -207,22 +229,34 @@ Home页引入代码
             transform: translateY(-50%);
             width: 25px;
             height: 25px;
-            background-color: #3498db;
+            background-color: #1e3241e0;
             color: #fff;
             border: none;
             border-radius: 50%;
-            font-size: 11px;
+            font-size: 16px;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
+        }
+
+        .center-message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+            font-size: 24px;
+            display: none; /* 默认隐藏 */
         }
     </style>
 </head>
 <body>
     <iframe name="player"></iframe> 
 
-    <button class="floating-button" onclick="playRandomVideo()">▶</button>
+    <button class="floating-button" onclick="playRandomVideo()">⏭</button>
+
+    <div class="center-message" id="centerMessage">目前API抽风中…请等待</div>
 
     <script>
         // 获取页面参数
@@ -239,33 +273,55 @@ Home页引入代码
 
                 // 使用fetch获取API数据
                 fetch(`https://api.allorigins.win/raw?url=https://api.bilibili.com/x/v3/fav/resource/ids?media_id=${mediaId}`)
-                    .then(response => response.json())
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('API请求失败');
+                        }
+                        return response.json();
+                    })
                     .then(data => {
                         // 提取每个数据项中的bvid
                         const bvids = data.data.map(item => item.bvid);
 
-                        // 随机选择一个bvid
-                        const randomBvid = bvids[Math.floor(Math.random() * bvids.length)];
+                        if (bvids.length === 0) {
+                            // 如果没有视频数据，显示信息
+                            document.getElementById('centerMessage').style.display = 'block';
+                        } else {
+                            // 随机选择一个bvid
+                            const randomBvid = bvids[Math.floor(Math.random() * bvids.length)];
 
-                        // 设置iframe的src属性以载入视频，但不自动播放
-                        document.querySelector('iframe').src = `https://player.bilibili.com/player.html?bvid=${randomBvid}&autoplay=0`;
+                            // 设置iframe的src属性以载入视频，但不自动播放
+                            document.querySelector('iframe').src = `https://player.bilibili.com/player.html?bvid=${randomBvid}&autoplay=0`;
 
-                        // 查找选定视频的duration，如果有，延时后切换到下一个视频
-                        const selectedApiUrl = `https://api.allorigins.win/raw?url=https://api.bilibili.com/x/web-interface/view?bvid=${randomBvid}`;
-                        fetch(selectedApiUrl)
-                            .then(response => response.json())
-                            .then(videoData => {
-                                const duration = videoData.data.duration;
-                                console.log(`Video Duration: ${duration} seconds`);
+                            // 查找选定视频的duration，如果有，延时后切换到下一个视频
+                            const selectedApiUrl = `https://api.allorigins.win/raw?url=https://api.bilibili.com/x/web-interface/view?bvid=${randomBvid}`;
+                            fetch(selectedApiUrl)
+                                .then(response => {
+                                    if (!response.ok) {
+                                        throw new Error('视频数据请求失败');
+                                    }
+                                    return response.json();
+                                })
+                                .then(videoData => {
+                                    const duration = videoData.data.duration;
+                                    console.log(`Video Duration: ${duration} seconds`);
 
-                                // 延时后切换到下一个视频
-                                timerId = setTimeout(playRandomVideo, duration * 1000);
-                            })
-                            .catch(error => console.error('Error fetching video data:', error));
+                                    // 延时后切换到下一个视频
+                                    timerId = setTimeout(playRandomVideo, duration * 1000);
+                                })
+                                .catch(error => {
+                                    console.error('Error fetching video data:', error);
+                                    document.getElementById('centerMessage').style.display = 'block';
+                                });
+                        }
                     })
-                    .catch(error => console.error('Error fetching API data:', error));
+                    .catch(error => {
+                        console.error('Error fetching API data:', error);
+                        document.getElementById('centerMessage').style.display = 'block';
+                    });
             } else {
                 console.error('Missing "id" parameter in the URL.');
+                document.getElementById('centerMessage').style.display = 'block';
             }
         }
 
@@ -274,7 +330,6 @@ Home页引入代码
     </script>
 </body>
 </html>
-
 ```
 
 修改来源：https://github.com/rcqed/Bili-Fav-Player
