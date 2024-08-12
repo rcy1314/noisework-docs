@@ -16,16 +16,16 @@ HTML中
 		<!-- 视频容器 -->
 		<div id="video-container">
 		  <!-- 视频元素 -->
-		  <video id="random-video" width="100%" height="auto" controls>
+		  <video id="random-video" width="100%" height="auto" controls webkit-playsinline playsinline controlsList="nodownload noremoteplayback">
 			<source src="视频链接" type="video/mp4">
 			您的浏览器不支持视频标签。
 		  </video>
 		</div>
 		<!-- 控制按钮 -->
 		<div id="control-buttons">
-		  <button onclick="prevVideo()" style="font-size:11px;">上一个</button>
-		  <button id="play-pause-btn" onclick="togglePlay()" style="font-size:11px;">播放/暂停</button>
-		  <button onclick="nextVideo()" style="font-size:11px;">下一个</button>
+		  <button onclick="prevVideo()" style="font-size:12px;">⏮</button>
+		  <button id="play-pause-btn" onclick="togglePlay()" style="font-size:12px;">▶</button>
+		  <button onclick="nextVideo()" style="font-size:12px;">⏭</button>
 		</div>
 	  </div>
 	</ul>
@@ -36,18 +36,31 @@ HTML中
 css代码
 
 ```
- /* 视频组件效果 */
+/* 视频组件效果 */
 /* 引入的随机视频组件按钮 */
+/* 控制按钮样式 */
 #control-buttons {
     text-align: center;
-    margin-top: 6px; /* 根据需要调整间距 */
+    margin-top: -2px; /* 根据需要调整间距 */
+    background-color: rgba(241, 243, 244, 0.5); /* 透明背景色 */
+    padding: 5px; /* 添加内边距 */
+    border-radius: 5px; /* 添加圆角边框 */
   }
   
   #control-buttons button {
     margin: 0 5px; /* 根据需要调整按钮间距 */
+    background-color: transparent; /* 按钮背景透明 */
+    border: none; /* 移除边框 */
+    color: #000; /* 按钮文字颜色，可根据需要调整 */
+    cursor: pointer; /* 鼠标悬停时显示指针 */
   }
-/* 基本样式 */
-#video-container {
+  
+  #control-buttons button:hover {
+    color: #666; /* 鼠标悬停时按钮文字颜色，可根据需要调整 */
+  }
+  
+  /* 基本样式 */
+  #video-container {
     width: 100%;
     max-width: 172px; /* 最大宽度，可根据需要调整 */
   }
