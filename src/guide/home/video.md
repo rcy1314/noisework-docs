@@ -1,6 +1,6 @@
 ## 视频组件
 
-## 一般常规视频引入
+## 一、外链视频引入
 
 ![1729308652](https://jsd.cdn.noisework.cn/gh/rcy1314/tuchuang@main/uPic/1729308652.png)
 
@@ -181,7 +181,7 @@ window.addEventListener('load', function() {
 
 ```
 
-## b站收藏夹视频
+## 二、b站收藏夹视频
 
 ![1723449801561](https://jsd.cdn.noisework.cn/gh/rcy1314/tuchuang@main/uPic/1723449801561.png)
 
@@ -209,9 +209,32 @@ Home页直接引入代码
 
 
 
-这里我把要引入链接页面改为了我自己的链接【你可以仅修改id】，方便后续更改代码效果，你也可以本地化引入
+## 使用
+
+iframe标签中仅修改id即可，即
+
+https://www.noisework.cn/e/bili/index.html?id=你自己的的收藏夹ID
+
+
+
+### 收藏夹说明
+
+
+
+1. 新建一个b站公开的收藏夹
+2. 收藏视频到收藏夹
+3. 把收藏夹id填入URL后面的"id="中
+
+![1723367963587](https://jsd.cdn.noisework.cn/gh/rcy1314/tuchuang@main/uPic/1723367963587.png)
+
+右下角的按钮功能为“下一个视频”方便后续更改代码效果，你也可以本地化引入
 
 本地化引入的html为
+
+<details>
+<summary>✅ 文档导航【点击展开】</summary>
+
+
 
 ```
 <!DOCTYPE html>
@@ -355,17 +378,9 @@ Home页直接引入代码
 </html>
 ```
 
-### b站收藏说明
 
 
-
-1. 新建一个b站公开的收藏夹
-2. 收藏视频到收藏夹
-3. 把收藏夹id填入URL后面的"id="中
-
-![1723367963587](https://jsd.cdn.noisework.cn/gh/rcy1314/tuchuang@main/uPic/1723367963587.png)
-
-右下角的按钮功能为“下一个视频”
+</details>
 
 ## 注意
 
