@@ -1,12 +1,12 @@
 # 头像配置
 
-# 新的
+## 新的
 
-==**新的代码是为动态的GIF头像而准备**==
+新的代码是为动态的GIF头像而准备
 
-==**旧的部分则是为静态的头像图片而准备**==
+旧的部分则是为静态的头像图片而准备
 
-==**可以根据自己喜好调整==**
+可以根据自己喜好调整
 
 
 
@@ -256,7 +256,7 @@ setDefaultMobileImage();
 
 
 
-# 旧的
+## 旧的
 
 ![logol](https://jsd.cdn.noisework.cn/gh/rcy1314/tuchuang@main/uPic/logol.png)
 
