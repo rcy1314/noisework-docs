@@ -232,7 +232,7 @@ https://www.noisework.cn/e/bili/index.html?id=你自己的的收藏夹ID
 本地化引入的html为
 
 <details>
-<summary>✅ 文档导航【点击展开】</summary>
+<summary>✅ 引入代码【点击展开】</summary>
 
 
 
