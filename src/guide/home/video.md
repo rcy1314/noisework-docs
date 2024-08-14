@@ -81,8 +81,10 @@ JS代码
 var videos = [
     "https://jsd.cdn.noisework.cn/gh/rcy1314/tuchuang@main/uPic/f83b646a4cee41e588ca023e2a114e2f.mp4",
     "https://jsd.cdn.noisework.cn/gh/rcy1314/tuchuang@main/uPic/bc6473e95d7f4bd1ba2f91d1cf632dfe.mp4",
-    
-    "视频链接3"
+    "https://jsd.cdn.noisework.cn/gh/rcy1314/tuchuang@main/uPic/914f70446ab3414a8b2d2c75be8135a4.mp4",
+    "https://jsd.cdn.noisework.cn/gh/rcy1314/tuchuang@main/uPic/9e782b9469e04a67a64022a3cb964c83.mp4",
+    "https://jsd.cdn.noisework.cn/gh/rcy1314/tuchuang@main/uPic/fd1d5b76283f424ab83cd040f15feb3b.mp4",
+
 ];  // 视频链接数组
 var currentVideoIndex = 0; // 当前视频索引
 
@@ -102,19 +104,19 @@ function togglePlay() {
     }
 }
 // 获取视频元素和播放/暂停按钮
-  var video = document.getElementById("random-video");
-  var playPauseBtn = document.getElementById("play-pause-btn");
+var video = document.getElementById("random-video");
+var playPauseBtn = document.getElementById("play-pause-btn");
 
-  // 切换播放和暂停的函数
-  function togglePlay() {
+// 切换播放和暂停的函数
+function togglePlay() {
     if (video.paused || video.ended) {
-      video.play();
-      playPauseBtn.textContent = "⏸"; // 播放时显示暂停图标
+        video.play();
+        playPauseBtn.textContent = "⏸"; // 播放时显示暂停图标
     } else {
-      video.pause();
-      playPauseBtn.textContent = "▶"; // 暂停时显示播放图标
+        video.pause();
+        playPauseBtn.textContent = "▶"; // 暂停时显示播放图标
     }
-  }
+}
 // 随机选择一个视频
 function randomVideo() {
     currentVideoIndex = Math.floor(Math.random() * videos.length);
@@ -143,24 +145,23 @@ function updateVideo() {
 }
 
 // 监听视频错误事件，自动跳过失效视频
-document.getElementById("random-video").addEventListener('error', function() {
+document.getElementById("random-video").addEventListener('error', function () {
     console.log("视频加载失败，尝试下一个视频");
     nextVideo(); // 直接调用nextVideo()来尝试下一个视频
 });
 
 // 监听视频结束事件，自动播放下一个视频
-document.getElementById("random-video").addEventListener('ended', function() {
-    nextVideo(); // 直接调用nextVideo()来播放下一个视频
-});
+// document.getElementById("random-video").addEventListener('ended', function() {
+//     nextVideo(); // 直接调用nextVideo()来播放下一个视频
+// });
 
 // 初始化，随机选择一个视频进行播放
 randomVideo();
-
 // 创建一个命名空间
 var MyVideoPlayer = MyVideoPlayer || {};
 
 // 在命名空间中定义预加载视频的函数
-MyVideoPlayer.preloadVideos = function() {
+MyVideoPlayer.preloadVideos = function () {
     // 预加载当前视频
     var currentVideo = new Video();
     currentVideo.src = MyVideoPlayer.videos[MyVideoPlayer.currentVideoIndex];
@@ -174,12 +175,16 @@ MyVideoPlayer.preloadVideos = function() {
 };
 
 // 使用事件监听器来添加页面加载时的处理函数
-window.addEventListener('load', function() {
+window.addEventListener('load', function () {
     MyVideoPlayer.preloadVideos();
 });
-
-
 ```
+
+
+
+如果你想开启点击后自动播放可把下面代码的注释取消掉，即删除文字行下一行的所有的//
+
+![1723606903370](https://jsd.cdn.noisework.cn/gh/rcy1314/tuchuang@main/uPic/1723606903370.png)
 
 ## 二、b站收藏夹视频
 
