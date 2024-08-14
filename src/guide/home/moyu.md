@@ -1,6 +1,6 @@
 # 摸鱼日历
 
-### No.1
+## No.1
 
 ![mo](https://jsd.cdn.noisework.cn/gh/rcy1314/tuchuang@main/uPic/mo.png)
 
@@ -115,9 +115,23 @@
 
 ## No.3
 
+直接调用图片格式：
+
+### 1
+
 ![1723314542056](https://jsd.cdn.noisework.cn/gh/rcy1314/tuchuang@main/uPic/1723314542056.png)
 
 来源API：https://api.52vmy.cn/api/wl/moyu
+
+### 2
+
+<img src="/Users/noise/Downloads/1723649015318.png" alt="1723649015318" style="zoom: 33%;" />
+
+
+
+API来源：https://dayu.qqsuu.cn/moyuribao/apis.php
+
+请求json参数：`https://dayu.qqsuu.cn/moyuribao/apis.php?type=json`
 
 ### 引入
 
@@ -135,3 +149,9 @@ HTML添加下面即可
 	</div>
 	<!-- 摸鱼日报结束-->
 ```
+
+更换仅在img标签中替换即可
+
+## 注意
+
+API接口是否可用请自查，如有失效请自行更换
