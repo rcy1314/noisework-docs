@@ -8,7 +8,7 @@
 
 注：动态头像会载入更慢些，但效果会更好些
 
-## 新的
+## 动态头像
 
 为优化显示效果，我对PC端和手机端显示的动态头像做了分类处理，PC端为透明图层gif，手机端为不透明图层gif，你可以参考。
 
@@ -374,7 +374,7 @@ mobileObserver.observe(mobileLogoDiv);
 
 </details>
 
-## 旧的
+## 静态头像
 
 ![logol](https://jsd.cdn.noisework.cn/gh/rcy1314/tuchuang@main/uPic/logol.png)
 
