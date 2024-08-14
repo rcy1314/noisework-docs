@@ -123,120 +123,6 @@ let images = ['https://jsd.cdn.noisework.cn/gh/rcy1314/tuchuang@main/uPic/logo10
 
 ![](https://jsd.cdn.noisework.cn/gh/rcy1314/tuchuang@main/uPic/1723541825693.png)
 
-随机出现效果JS
-
-<details>
-<summary>✅ 点击展开</summary>
-
-
-
-```
-//pc头像logo
-let images = ['https://jsd.cdn.noisework.cn/gh/rcy1314/tuchuang@main/uPic/logo10.gif',
-    'https://jsd.cdn.noisework.cn/gh/rcy1314/tuchuang@main/uPic/logo9.gif',
-]; // 图片数组
-let currentImageIndex = -1; // 
-const logoDiv = document.getElementById('logoDiv');
-const defaultImage = 'https://jsd.cdn.noisework.cn/gh/rcy1314/tuchuang@main/uPic/logo10.gif'; // 默认图片路径
-
-function setDefaultImage() {
-    logoDiv.style.backgroundImage = `url(${defaultImage})`;
-}
-
-function loadImage(index) {
-    let img = new Image();
-    img.onload = function () {
-        logoDiv.style.backgroundImage = `url(${images[index]})`;
-        currentImageIndex = index; 
-    };
-    img.onerror = function () {
-        // 如果图片加载失败，尝试下一张
-        if (index < images.length - 1) {
-            loadImage(index + 1);
-        } else {
-            setDefaultImage();
-        }
-    };
-    img.src = images[index];
-}
-
-// 初始化，随机选择一个图片进行加载
-loadImage(Math.floor(Math.random() * images.length));
-
-// 添加点击事件监听器
-logoDiv.addEventListener('click', () => {
-    currentImageIndex = -1;
-    loadImage(Math.floor(Math.random() * images.length));
-});
-
-// 使用IntersectionObserver来实现懒加载
-let observer = new IntersectionObserver((entries, observer) => {
-    // 检查元素是否可见
-    if (entries[0].isIntersecting) {
-        // 如果已经加载过图片，不再重新加载
-        if (currentImageIndex === -1) {
-            loadImage(Math.floor(Math.random() * images.length));
-        }
-    }
-}, { threshold: [0] });
-
-observer.observe(logoDiv);
-
-// 手机页面头部logo
-let mobileImages = ['https://jsd.cdn.noisework.cn/gh/rcy1314/tuchuang@main/uPic/mobileLogo7.gif',
-    'https://jsd.cdn.noisework.cn/gh/rcy1314/tuchuang@main/uPic/mobileLogo1.gif',
- 
-]; // 图片数组
-let currentMobileImageIndex = -1; // 
-const mobileLogoDiv = document.getElementById('mobileLogoDiv');
-const defaultMobileImage = 'https://jsd.cdn.noisework.cn/gh/rcy1314/tuchuang@main/uPic/mobileLogo7.gif'; // 默认手机图片路径
-
-function setDefaultMobileImage() {
-    mobileLogoDiv.style.backgroundImage = `url(${defaultMobileImage})`;
-}
-
-function loadMobileImage(index) {
-    let img = new Image();
-    img.onload = function () {
-        mobileLogoDiv.style.backgroundImage = `url(${mobileImages[index]})`;
-        currentMobileImageIndex = index; 
-    };
-    img.onerror = function () {
-        // 如果图片加载失败，尝试下一张
-        if (index < mobileImages.length - 1) {
-            loadMobileImage(index + 1);
-        } else {
-            // 如果所有图片都尝试过，则使用默认图像
-            setDefaultMobileImage();
-        }
-    };
-    img.src = mobileImages[index];
-}
-
-// 初始化，随机选择一个图片进行加载
-loadMobileImage(Math.floor(Math.random() * mobileImages.length));
-
-// 添加点击事件监听器
-mobileLogoDiv.addEventListener('click', () => {
-    // 重置当前图片索引，以便重新随机选择
-    currentMobileImageIndex = -1;
-    loadMobileImage(Math.floor(Math.random() * mobileImages.length));
-});
-
-// 使用IntersectionObserver来实现懒加载
-let mobileObserver = new IntersectionObserver((entries, observer) => {
-    if (entries[0].isIntersecting) {
-        // 如果已经加载过图片，不再重新加载
-        if (currentMobileImageIndex === -1) {
-            loadMobileImage(Math.floor(Math.random() * mobileImages.length));
-        }
-    }
-}, { threshold: [0] });
-mobileObserver.observe(mobileLogoDiv);
-```
-
-</details>
-
 ### 手机端头像设置
 
 HTML中引入
@@ -370,13 +256,129 @@ setDefaultMobileImage();
 
 ------
 
+### 头像随机出现效果JS
 
+和上面的js不同，两个保留一个，如果你想使用随机效果可查看下面的代码
+
+<details>
+<summary>✅ 点击展开</summary>
+
+
+
+```
+//pc头像logo
+let images = ['https://jsd.cdn.noisework.cn/gh/rcy1314/tuchuang@main/uPic/logo10.gif',
+    'https://jsd.cdn.noisework.cn/gh/rcy1314/tuchuang@main/uPic/logo9.gif',
+]; // 图片数组
+let currentImageIndex = -1; // 
+const logoDiv = document.getElementById('logoDiv');
+const defaultImage = 'https://jsd.cdn.noisework.cn/gh/rcy1314/tuchuang@main/uPic/logo10.gif'; // 默认图片路径
+
+function setDefaultImage() {
+    logoDiv.style.backgroundImage = `url(${defaultImage})`;
+}
+
+function loadImage(index) {
+    let img = new Image();
+    img.onload = function () {
+        logoDiv.style.backgroundImage = `url(${images[index]})`;
+        currentImageIndex = index; 
+    };
+    img.onerror = function () {
+        // 如果图片加载失败，尝试下一张
+        if (index < images.length - 1) {
+            loadImage(index + 1);
+        } else {
+            setDefaultImage();
+        }
+    };
+    img.src = images[index];
+}
+
+// 初始化，随机选择一个图片进行加载
+loadImage(Math.floor(Math.random() * images.length));
+
+// 添加点击事件监听器
+logoDiv.addEventListener('click', () => {
+    currentImageIndex = -1;
+    loadImage(Math.floor(Math.random() * images.length));
+});
+
+// 使用IntersectionObserver来实现懒加载
+let observer = new IntersectionObserver((entries, observer) => {
+    // 检查元素是否可见
+    if (entries[0].isIntersecting) {
+        // 如果已经加载过图片，不再重新加载
+        if (currentImageIndex === -1) {
+            loadImage(Math.floor(Math.random() * images.length));
+        }
+    }
+}, { threshold: [0] });
+
+observer.observe(logoDiv);
+
+// 手机页面头部logo
+let mobileImages = ['https://jsd.cdn.noisework.cn/gh/rcy1314/tuchuang@main/uPic/mobileLogo7.gif',
+    'https://jsd.cdn.noisework.cn/gh/rcy1314/tuchuang@main/uPic/mobileLogo1.gif',
+ 
+]; // 图片数组
+let currentMobileImageIndex = -1; // 
+const mobileLogoDiv = document.getElementById('mobileLogoDiv');
+const defaultMobileImage = 'https://jsd.cdn.noisework.cn/gh/rcy1314/tuchuang@main/uPic/mobileLogo7.gif'; // 默认手机图片路径
+
+function setDefaultMobileImage() {
+    mobileLogoDiv.style.backgroundImage = `url(${defaultMobileImage})`;
+}
+
+function loadMobileImage(index) {
+    let img = new Image();
+    img.onload = function () {
+        mobileLogoDiv.style.backgroundImage = `url(${mobileImages[index]})`;
+        currentMobileImageIndex = index; 
+    };
+    img.onerror = function () {
+        // 如果图片加载失败，尝试下一张
+        if (index < mobileImages.length - 1) {
+            loadMobileImage(index + 1);
+        } else {
+            // 如果所有图片都尝试过，则使用默认图像
+            setDefaultMobileImage();
+        }
+    };
+    img.src = mobileImages[index];
+}
+
+// 初始化，随机选择一个图片进行加载
+loadMobileImage(Math.floor(Math.random() * mobileImages.length));
+
+// 添加点击事件监听器
+mobileLogoDiv.addEventListener('click', () => {
+    // 重置当前图片索引，以便重新随机选择
+    currentMobileImageIndex = -1;
+    loadMobileImage(Math.floor(Math.random() * mobileImages.length));
+});
+
+// 使用IntersectionObserver来实现懒加载
+let mobileObserver = new IntersectionObserver((entries, observer) => {
+    if (entries[0].isIntersecting) {
+        // 如果已经加载过图片，不再重新加载
+        if (currentMobileImageIndex === -1) {
+            loadMobileImage(Math.floor(Math.random() * mobileImages.length));
+        }
+    }
+}, { threshold: [0] });
+mobileObserver.observe(mobileLogoDiv);
+```
+
+
+
+</details>
 
 ## 旧的
 
 ![logol](https://jsd.cdn.noisework.cn/gh/rcy1314/tuchuang@main/uPic/logol.png)
 
-头像配置分两部分，html中head标签开始处找到
+html中head标签开始处找到
 
 一、手机端头像
 
