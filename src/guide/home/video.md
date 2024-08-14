@@ -41,35 +41,35 @@ css代码
 /* 控制按钮样式 */
 #control-buttons {
     text-align: center;
-    margin-top: -2px; /* 根据需要调整间距 */
-    background-color: rgba(241, 243, 244, 0.5); /* 透明背景色 */
-    padding: 5px; /* 添加内边距 */
-    border-radius: 5px; /* 添加圆角边框 */
+    margin-top: -2px; 
+    background-color: rgba(241, 243, 244, 0.5); 
+    padding: 5px; 
+    border-radius: 5px; 
   }
   
   #control-buttons button {
-    margin: 0 5px; /* 根据需要调整按钮间距 */
-    background-color: transparent; /* 按钮背景透明 */
-    border: none; /* 移除边框 */
-    color: #000; /* 按钮文字颜色，可根据需要调整 */
-    cursor: pointer; /* 鼠标悬停时显示指针 */
+    margin: 0 5px; 
+    background-color: transparent; 
+    border: none; 
+    color: #000; 
+    cursor: pointer; 
   }
   
   #control-buttons button:hover {
-    color: #666; /* 鼠标悬停时按钮文字颜色，可根据需要调整 */
+    color: #666; 
   }
   
   /* 基本样式 */
   #video-container {
     width: 100%;
-    max-width: 172px; /* 最大宽度，可根据需要调整 */
+    max-width: 172px;
   }
   
   /* 手机屏幕尺寸下的样式 */
   @media only screen and (max-width: 600px) {
     #video-container, #random-video {
       width: 100%;
-      max-width: 100%; /* 在小屏幕上，视频容器和视频元素宽度为100% */
+      max-width: 100%; 
     }
   }
 ```
@@ -152,7 +152,7 @@ document.getElementById("random-video").addEventListener('error', function () {
 
 // 监听视频结束事件，自动播放下一个视频
 // document.getElementById("random-video").addEventListener('ended', function() {
-//     nextVideo(); // 直接调用nextVideo()来播放下一个视频
+//     nextVideo(); 
 // });
 
 // 初始化，随机选择一个视频进行播放

@@ -44,7 +44,7 @@ css代码
 
 @keyframes zoom {
     0% { transform: scale(1); }
-    100% { transform: scale(1.02); } /* 假设放大到110% */
+    100% { transform: scale(1.02); } 
 }
 
 .logo:hover {
@@ -70,8 +70,8 @@ css代码
     color: #fff;
     padding: 5px;
     border-radius: 5px;
-    white-space: nowrap; /* 防止文本换行 */
-    pointer-events: none; /* 防止点击tooltip触发其他事件 */
+    white-space: nowrap; 
+    pointer-events: none; 
 }
 
 .logo:hover .tooltip {
@@ -165,7 +165,6 @@ loadImage(Math.floor(Math.random() * images.length));
 
 // 添加点击事件监听器
 logoDiv.addEventListener('click', () => {
-    // 重置当前图片索引，以便重新随机选择
     currentImageIndex = -1;
     loadImage(Math.floor(Math.random() * images.length));
 });
@@ -226,7 +225,6 @@ mobileLogoDiv.addEventListener('click', () => {
 
 // 使用IntersectionObserver来实现懒加载
 let mobileObserver = new IntersectionObserver((entries, observer) => {
-    // 检查元素是否可见
     if (entries[0].isIntersecting) {
         // 如果已经加载过图片，不再重新加载
         if (currentMobileImageIndex === -1) {
