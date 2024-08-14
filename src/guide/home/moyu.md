@@ -125,7 +125,7 @@
 
 ### 2
 
-<img src="/Users/noise/Downloads/1723649015318.png" alt="1723649015318" style="zoom: 33%;" />
+<img src="https://jsd.cdn.noisework.cn/gh/rcy1314/tuchuang@main/uPic/1723649015318.png" alt="1723649015318" style="zoom: 33%;" />
 
 
 
