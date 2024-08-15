@@ -254,6 +254,10 @@ setDefaultMobileImage();
 
 在实际的代码中我通常选择外链引入，外链失效时会找本地
 
+上述图片可在github中找到或可
+
+https://pan.quark.cn/s/0d7b0ca49759 下载
+
 ------
 
 ### 头像随机出现效果JS
