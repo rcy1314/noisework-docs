@@ -4,7 +4,7 @@
 
 预览一些增加的效果【不代表最新代码中不会修改音效】
 
-<video width="100%" height="100%"  src="https://jsd.cdn.noisework.cn/gh/rcy1314/tuchuang@main/uPic/%E4%B8%BB%E9%A1%B5%E6%9B%B4%E6%96%B0%E6%BC%94%E7%A4%BA01.mp4"  autoplay controls loop></video>
+<video width="100%" height="100%" src="https://jsd.cdn.noisework.cn/gh/rcy1314/tuchuang@main/uPic/%E4%B8%BB%E9%A1%B5%E6%9B%B4%E6%96%B0%E6%BC%94%E7%A4%BA01.mp4" controls loop></video>
 
 ## 音效特征
 
