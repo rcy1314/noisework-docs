@@ -105,6 +105,8 @@ git clone https://github.com/rcy1314/noisework
 
 [配置](https://docs.noisework.cn/guide/right.html)
 
+## 音效效果
 
+[配置](https://docs.noisework.cn/guide/sound.html)
 
 </details>
