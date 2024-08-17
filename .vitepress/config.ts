@@ -215,7 +215,15 @@ export default defineConfig({
                 }
               ]
             },
-            
+            {
+              text: '音效效果',
+              items: [
+                {
+                  text: '配置',
+                  link: '/guide/sound'
+                }
+              ]
+            },
           ]
         }
       }
@@ -259,6 +267,6 @@ export default defineConfig({
       copyright: 'Copyright © 204 NOISE'
     }
       }
-      } 
-  
+      }
+
   );
