@@ -116,6 +116,10 @@ export default defineConfig({
                 {
                   text: '侧边导航按钮',
                   link: '/guide/index/tab'
+                },
+                {
+                  text: '浮动文字',
+                  link: '/guide/index/flotext'
                 }
               ]
             },
@@ -177,6 +181,10 @@ export default defineConfig({
                 {
                   text: '每日60秒',
                   link: '/guide/home/days'
+                },
+                {
+                  text: '组件监测',
+                  link: '/guide/home/Detection'
                 }
               ]
             },
