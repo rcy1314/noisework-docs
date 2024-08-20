@@ -9,8 +9,9 @@ export default defineConfig({
       description: '无限多模式个性化个人主页引导页模版',
       themeConfig: {
         nav: [
-          { text: '指引', link: '/guide/intro', activeMatch: '/guide/' },
+          { text: '介绍', link: '/guide/intro', activeMatch: '/guide/' },
           { text: '常见问题', link: '/faq/', activeMatch: '/faq/' },
+          { text: '更新日志', link: '/update/', activeMatch: '/update/' },
           {
             text: '捐赠',
             link: '/other/donate'
