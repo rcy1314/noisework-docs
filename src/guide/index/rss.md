@@ -8,6 +8,8 @@
 - 带有关闭按钮，点击后即可关闭
 - 仅在电脑端尺寸下显示，手机端自动隐藏
 
+### 注意：你需要自己的https://rss2json.com 账户API key
+
 ![](https://jsd.cdn.noisework.cn/gh/rcy1314/tuchuang@main/20230820/截屏2023-08-20-20.27.12.2eoc9vsplosg.jpg)
 
 ## 使用
@@ -22,63 +24,7 @@
           </div>
 ```
 
-rss.js：
 
-```
-    // JavaScript代码-rss
-    var rssContainer = document.querySelector('.rss-container');
-    var rssItem = document.getElementById('rss-item');
-    var rssSources = [
-      'https://www.noiseblog.top/atom.xml',
-      'https://noisevip.cn/feed',
-      // 添加更多的RSS信息源
-    ];
-    var currentRssIndex = 0;
-    var currentRssItemIndex = 0;
-    
-    function fetchRssItems(url) {
-      fetch('https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(url))
-        .then(response => response.json())
-        .then(data => {
-          rssItem.innerHTML = ''; // 清空之前的RSS项
-    
-          var rssLink = document.createElement('div');
-          rssLink.classList.add('rss-link');
-          var item = data.items[currentRssItemIndex];
-          var pubDate = new Date(item.pubDate);
-          var formattedDate = pubDate.toLocaleDateString();
-          rssLink.innerHTML = `<a href="${item.link}" target="_blank">${item.title} - ${formattedDate}</a>`;
-    
-          rssItem.appendChild(rssLink);
-    
-          currentRssItemIndex = (currentRssItemIndex + 1) % data.items.length;
-          if (currentRssItemIndex === 0) {
-            currentRssIndex = (currentRssIndex + 1) % rssSources.length;
-          }
-        });
-    }
-    
-    // 获取并解析所有RSS信息源的数据
-    rssSources.forEach(source => {
-      fetchRssItems(source);
-    });
-    
-    // 页面载入后延迟2秒后弹出效果
-    setTimeout(function() {
-      rssContainer.classList.add('open');
-    }, 2000);
-    
-    // 点击关闭按钮后隐藏容器
-    var closeButton = document.getElementById('close-button');
-    closeButton.addEventListener('click', function() {
-      rssContainer.style.display = 'none';
-    });
-    
-    // 每隔8秒变换一次信息
-    setInterval(function() {
-      fetchRssItems(rssSources[currentRssIndex]);
-    }, 8000);
-```
 
 rss.css：
 
@@ -138,15 +84,9 @@ rss.css：
     }
 ```
 
-## 预览：
-
-访问；https://www.noisework.cn
-
-## 附加：
-
 因其rss2json有api更新限制，你可以使用以下代码来获取自己账户下的rss更新显示
 
-rss.js:
+rss.js:（有自动刷新功能）
 
 ```
 // JavaScript代码-rss
@@ -225,3 +165,66 @@ lastUpdateTimes[source] = pubDate;
 ```
 
 ![1722269229303](https://jsd.cdn.noisework.cn/gh/rcy1314/tuchuang@main/uPic/1722269229303.png)
+
+<details>
+<summary>✅ 【点击展开】</summary>
+
+## 没有自动刷新功能的rss.js
+
+```
+    // JavaScript代码-rss
+    var rssContainer = document.querySelector('.rss-container');
+    var rssItem = document.getElementById('rss-item');
+    var rssSources = [
+      'https://www.noiseblog.top/atom.xml',
+      'https://noisevip.cn/feed',
+      // 添加更多的RSS信息源
+    ];
+    var currentRssIndex = 0;
+    var currentRssItemIndex = 0;
+    
+    function fetchRssItems(url) {
+      fetch('https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(url))
+        .then(response => response.json())
+        .then(data => {
+          rssItem.innerHTML = ''; // 清空之前的RSS项
+    
+          var rssLink = document.createElement('div');
+          rssLink.classList.add('rss-link');
+          var item = data.items[currentRssItemIndex];
+          var pubDate = new Date(item.pubDate);
+          var formattedDate = pubDate.toLocaleDateString();
+          rssLink.innerHTML = `<a href="${item.link}" target="_blank">${item.title} - ${formattedDate}</a>`;
+    
+          rssItem.appendChild(rssLink);
+    
+          currentRssItemIndex = (currentRssItemIndex + 1) % data.items.length;
+          if (currentRssItemIndex === 0) {
+            currentRssIndex = (currentRssIndex + 1) % rssSources.length;
+          }
+        });
+    }
+    
+    // 获取并解析所有RSS信息源的数据
+    rssSources.forEach(source => {
+      fetchRssItems(source);
+    });
+    
+    // 页面载入后延迟2秒后弹出效果
+    setTimeout(function() {
+      rssContainer.classList.add('open');
+    }, 2000);
+    
+    // 点击关闭按钮后隐藏容器
+    var closeButton = document.getElementById('close-button');
+    closeButton.addEventListener('click', function() {
+      rssContainer.style.display = 'none';
+    });
+    
+    // 每隔8秒变换一次信息
+    setInterval(function() {
+      fetchRssItems(rssSources[currentRssIndex]);
+    }, 8000);
+```
+
+</details>
