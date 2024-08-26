@@ -57,7 +57,7 @@ export default defineConfig({
               text: '开始',
               items: [
                 {
-                  text: '简介',
+                  text: '指引',
                   link: '/guide/intro'
                 },
                 {
@@ -185,6 +185,15 @@ export default defineConfig({
                 {
                   text: '组件监测',
                   link: '/guide/home/Detection'
+                }
+              ]
+            },
+            {
+              text: '布局调整',
+              items: [
+                {
+                  text: '配置',
+                  link: '/guide/Comment'
                 }
               ]
             },
