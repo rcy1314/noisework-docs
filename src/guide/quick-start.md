@@ -8,6 +8,8 @@
 
 点击[下载](https://github.com/rcy1314/noisework/releases)获取最新的打包文件
 
+⚠️在修改前，你需要了解如果你有不需要的组件或效果请在HTML中删除对应的代码，如果你不会修改就保留它避免造成代码混乱。
+
 ![1722242248392](https://jsd.cdn.noisework.cn/gh/rcy1314/tuchuang@main/uPic/1722242248392.png)
 
 如果想获取所有文件：
