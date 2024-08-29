@@ -16,9 +16,6 @@ hero:
       text: 快速开始
       link: /guide/quick-start
     - theme: alt
-      text: 简介说明
-      link: /guide/intro
-    - theme: alt
       text:  GitHub
       link: https://github.com/rcy1314/noisework
     - theme: alt
