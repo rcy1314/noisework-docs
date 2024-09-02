@@ -225,6 +225,15 @@ export default defineConfig({
               ]
             },
             {
+              text: '留言评论',
+              items: [
+                {
+                  text: '配置',
+                  link: '/guide/talk'
+                }
+              ]
+            },
+            {
               text: '右键菜单',
               items: [
                 {
