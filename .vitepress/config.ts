@@ -234,6 +234,15 @@ export default defineConfig({
               ]
             },
             {
+              text: '友情链接',
+              items: [
+                {
+                  text: '配置',
+                  link: '/guide/friendlink'
+                }
+              ]
+            },
+            {
               text: '右键菜单',
               items: [
                 {
