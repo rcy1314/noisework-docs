@@ -1455,7 +1455,48 @@ head处添加
 
 ## 注意
 
-注引入的每个页面的评论不同
+为了确保每个静态HTML页面的评论不同且有唯一指向
+
+需要你添加页面重定向（前提是你和我一样同时使用首页index和home页文件
+
+在main.js（首页的js文件）中添加
+
+```
+// 页面重定向
+window.addEventListener('DOMContentLoaded', function() {
+  var pathname = window.location.pathname;
+  // 检查路径是否为 /index.html，如果是，则替换为 /
+  if (pathname === '/index.html') {
+    var newUrl = window.location.protocol + '//' + window.location.host;
+    window.history.replaceState({ path: newUrl }, '', newUrl);
+  }
+  // 处理末尾的斜杠
+  else if (pathname.endsWith('/')) {
+    var newUrl = pathname.replace(/\/$/, '');
+    window.history.replaceState({ path: newUrl }, '', newUrl);
+  }
+});
+```
+
+在home-script.js（home页的JS文件）中添加
+
+```
+// 页面重定向
+window.addEventListener('DOMContentLoaded', function() {
+    var pathname = window.location.pathname;
+    // 检查路径是否为 /home.html，如果是，则替换为 /home
+    if (pathname === '/home.html') {
+      var newUrl = window.location.protocol + '//' + window.location.host + '/home';
+      window.history.replaceState({ path: newUrl }, '', newUrl);
+    }
+    else if (pathname.endsWith('/')) {
+      var newUrl = pathname.replace(/\/$/, '');
+      window.history.replaceState({ path: newUrl }, '', newUrl);
+    }
+  });
+```
+
+
 
 ## 参考
 
