@@ -12,6 +12,8 @@
 
 Home页预览
 
+![1725389670840](https://jsd.cdn.noisework.cn/gh/rcy1314/tuchuang@main/uPic/1725389670840.png)
+
 ![1725386623385](https://jsd.cdn.noisework.cn/gh/rcy1314/tuchuang@main/uPic/1725386623385.png)
 
 ## 引入
@@ -153,7 +155,7 @@ home页html在评论区上方添加并修改链接
     padding: 20px; /* 内边距 */
 }
 .friendcardbg {
-    background: rgba(34, 33, 33, 0.343); /* 圆弧透明黑色背景 */
+    background: rgba(34, 33, 33, 0); /* 圆弧透明黑色背景 */
     border-radius: 20px; /* 圆角边框 */
     padding: 20px; /* 内边距 */
 }
@@ -167,7 +169,7 @@ home页html在评论区上方添加并修改链接
     flex: 1 1 auto; /* 设置为自动宽度，根据剩余空间自动调整 */
     max-width: calc(25% - 15px); /* 最大宽度为四分之一 */
     padding: 10px;
-    background: rgba(16, 15, 15, 0); /* 透明黑色背景 */
+    background: rgba(29, 28, 28, 0.376); /* 透明黑色背景 */
     border-radius: 15px; /* 圆角边框 */
     overflow: hidden; /* 溢出隐藏 */
     text-align: center; /* 中心对齐 */
@@ -225,8 +227,15 @@ home页html在评论区上方添加并修改链接
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* 悬停时的阴影 */
 }
 
+/* 媒体查询：针对PC尺寸 */
+@media (min-width: 890px) {
+    .friendlinks-card {
+        flex: 1 1 calc(25% - 15px); /* 在PC尺寸下每行显示一个卡片 */
+        max-width: calc(25% - 15px); /* 最大宽度为四分之一 */
+    }
+}
 /* 媒体查询：针对手机尺寸 */
-@media (max-width: 890px) {
+@media (max-width: 680px) {
     .friendlinks-container {
         flex-wrap: wrap; /* 允许换行 */
         gap: 20px; /* 卡片之间的间距 */
@@ -236,13 +245,13 @@ home页html在评论区上方添加并修改链接
         max-width: calc(50% - 15px); /* 最大宽度为一半 */
     }
 }
-
 @media (max-width: 480px) {
     .friendlinks-card {
         flex: 1 1 calc(100% - 15px); /* 在极小屏幕上每行显示一个卡片 */
         max-width: calc(100% - 15px); /* 最大宽度为屏幕宽度 */
     }
 }
+
 ```
 
 根据自己需要进行调整
