@@ -244,28 +244,31 @@ https://www.noisework.cn/e/bili/index.html?id=你自己的的收藏夹ID
 ```
 <!DOCTYPE html>
 <html lang="zh">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NOISE-B站播放器</title>
     <!-- 省略了其他meta标签 -->
-
     <style>
-        html, body {
+        html,
+        body {
             margin: 0;
             padding: 0;
             overflow: hidden;
             height: 100%;
         }
+
         .center-message {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: #fff;
-    font-size: 15px; /* 将字体大小调整为15像素 */
-    display: none; /* 默认隐藏 */
-}
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+            font-size: 15px;
+            display: none;
+            /* 默认隐藏 */
+        }
 
         iframe {
             width: 100%;
@@ -290,96 +293,112 @@ https://www.noisework.cn/e/bili/index.html?id=你自己的的收藏夹ID
             align-items: center;
             justify-content: center;
         }
-
-        .center-message {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: #fff;
-            font-size: 24px;
-            display: none; /* 默认隐藏 */
-        }
     </style>
 </head>
-<body>
-    <iframe name="player"></iframe> 
+    <body>
+        <iframe name="player" onload="iframeLoaded()"></iframe> 
 
-    <button class="floating-button" onclick="playRandomVideo()">⏭</button>
+        <button class="floating-button" onclick="playRandomVideo()">⏭</button>
 
-    <div class="center-message" id="centerMessage">目前API抽风中…请等待</div>
+        <div class="center-message" id="centerMessage">载入中...... 请等待API生效或...尝试刷新</div>
 
-    <script>
-        // 获取页面参数
-        const urlParams = new URLSearchParams(window.location.search);
-        const mediaId = urlParams.get('id');
-        let timerId;
+        <script>
+            // 获取页面参数
+            const urlParams = new URLSearchParams(window.location.search);
+            const mediaId = urlParams.get('id');
+            let timerId;
 
-        function playRandomVideo() {
-            if (mediaId) {
-                // 清除之前的计时器
-                if (timerId) {
-                    clearTimeout(timerId);
-                }
-
-                // 使用fetch获取API数据
-                fetch(`https://api.allorigins.win/raw?url=https://api.bilibili.com/x/v3/fav/resource/ids?media_id=${mediaId}`)
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('API请求失败');
-                        }
-                        return response.json();
-                    })
-                    .then(data => {
-                        // 提取每个数据项中的bvid
-                        const bvids = data.data.map(item => item.bvid);
-
-                        if (bvids.length === 0) {
-                            // 如果没有视频数据，显示信息
-                            document.getElementById('centerMessage').style.display = 'block';
-                        } else {
-                            // 随机选择一个bvid
-                            const randomBvid = bvids[Math.floor(Math.random() * bvids.length)];
-
-                            // 设置iframe的src属性以载入视频，但不自动播放
-                            document.querySelector('iframe').src = `https://player.bilibili.com/player.html?bvid=${randomBvid}&autoplay=0`;
-
-                            // 查找选定视频的duration，如果有，延时后切换到下一个视频
-                            const selectedApiUrl = `https://api.allorigins.win/raw?url=https://api.bilibili.com/x/web-interface/view?bvid=${randomBvid}`;
-                            fetch(selectedApiUrl)
-                                .then(response => {
-                                    if (!response.ok) {
-                                        throw new Error('视频数据请求失败');
-                                    }
-                                    return response.json();
-                                })
-                                .then(videoData => {
-                                    const duration = videoData.data.duration;
-                                    console.log(`Video Duration: ${duration} seconds`);
-
-                                    // 延时后切换到下一个视频
-                                    timerId = setTimeout(playRandomVideo, duration * 1000);
-                                })
-                                .catch(error => {
-                                    console.error('Error fetching video data:', error);
-                                    document.getElementById('centerMessage').style.display = 'block';
-                                });
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error fetching API data:', error);
-                        document.getElementById('centerMessage').style.display = 'block';
-                    });
-            } else {
-                console.error('Missing "id" parameter in the URL.');
-                document.getElementById('centerMessage').style.display = 'block';
+            // iframe加载成功时的回调函数
+            function iframeLoaded() {
+                document.getElementById('centerMessage').style.display = 'none'; // 隐藏消息
             }
-        }
 
-        // 开始载入第一个视频
-        playRandomVideo();
-    </script>
-</body>
+            // 页面加载时检查视频加载是否成功
+            function checkVideoLoad() {
+                const iframe = document.querySelector('iframe');
+                if (!iframe.src) {
+                    document.getElementById('centerMessage').style.display = 'block';
+                }
+            }
+            let playedVideos = []; // 用于存储已播放的视频ID
+
+            // 获取视频数据并播放
+            function playRandomVideo() {
+                if (mediaId) {
+                    // 清除之前的计时器
+                    if (timerId) {
+                        clearTimeout(timerId);
+                    }
+
+                    // 使用CORS代理服务来请求API
+                    fetch(`https://api.allorigins.win/get?url=https://api.bilibili.com/x/v3/fav/resource/ids?media_id=${mediaId}`)
+                        .then(response => {
+                            if (response.status !== 200) {
+                                throw new Error('API请求失败');
+                            }
+                            return response.json();
+                        })
+                        .then(data => {
+                            // 解析API返回的数据
+                            const videoData = JSON.parse(data.contents);
+                            // 提取每个数据项中的bvid，并排除已播放的视频
+                            const bvids = videoData.data.map(item => item.bvid).filter(bvid => !playedVideos.includes(bvid));
+
+                            if (bvids.length === 0) {
+                                // 如果没有视频数据，显示信息
+                                document.getElementById('centerMessage').style.display = 'block';
+                            } else {
+                                // 随机选择一个bvid
+                                const randomBvid = bvids[Math.floor(Math.random() * bvids.length)];
+                                playedVideos.push(randomBvid); // 将选定的视频添加到已播放列表
+
+                                // 设置iframe的src属性以载入视频，同时关闭自动播放
+                                document.querySelector('iframe').src = `https://player.bilibili.com/player.html?bvid=${randomBvid}&autoplay=0&disableDanmaku=1`;
+                                document.getElementById('centerMessage').style.display = 'none'; // 成功加载视频后隐藏消息
+                               // 等待视频加载完成后再添加事件监听器
+                                const iframe = document.querySelector('iframe');
+                                iframe.addEventListener('load', function() {
+                                    iframe.addEventListener('ended', function() {
+                              // 视频播放完成后切换
+                                   playRandomVideo();
+                                });
+                             }); 
+                                // 查找选定视频的duration，如果有，延时后切换到下一个视频
+                                fetch(`https://api.allorigins.win/get?url=https://api.bilibili.com/x/web-interface/view?bvid=${randomBvid}`)
+                                    .then(response => {
+                                        if (response.status !== 200) {
+                                            throw new Error('视频数据请求失败');
+                                        }
+                                        return response.json();
+                                    })
+                                    .then(videoData => {
+                                        const duration = JSON.parse(videoData.contents).data.duration;
+                                        console.log(`Video Duration: ${duration} seconds`);
+
+                                        // 延时后切换到下一个视频
+                                        timerId = setTimeout(playRandomVideo, duration * 1000);
+                                    })
+                                    .catch(error => {
+                                        console.error('Error fetching video data:', error);
+                                        document.getElementById('centerMessage').style.display = 'block';
+                                    });
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error fetching API data:', error);
+                            document.getElementById('centerMessage').style.display = 'block';
+                        });
+                } else {
+                    console.error('Missing "id" parameter in the URL.');
+                    document.getElementById('centerMessage').style.display = 'block';
+                }
+            }
+
+            // 开始载入第一个视频
+            playRandomVideo(); 
+        </script>
+    </body>
+
 </html>
 ```
 
