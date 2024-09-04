@@ -167,6 +167,7 @@ home页html在评论区上方添加并修改链接
 
 .friendlinks-card {
     flex: 1 1 auto; /* 设置为自动宽度，根据剩余空间自动调整 */
+    width: calc(100% + 20px);
     max-width: calc(25% - 15px); /* 最大宽度为四分之一 */
     padding: 10px;
     background: rgba(29, 28, 28, 0.376); /* 透明黑色背景 */
@@ -176,11 +177,10 @@ home页html在评论区上方添加并修改链接
     transition: transform 0.3s, box-shadow 0.3s; /* 卡片放大效果与阴影 */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 初始阴影 */
 }
-
 .avatar img {
     /* 头像样式 */
-    width: 100px;
-    height: 100px; /* 设置头像高度 */
+    width: 80px;
+    height: 80px; /* 设置头像高度 */
     border-radius: 50%; /* 头像圆角 */
     margin-bottom: 6px; /* 头像和文字之间的间距 */
     object-fit: cover; /* 确保头像图片保持圆形 */
@@ -246,11 +246,9 @@ home页html在评论区上方添加并修改链接
         max-width: calc(100% - 15px); /* 最大宽度为屏幕宽度 */
     }
 }
-
 ```
 
 根据自己需要进行调整
-
 
 
 
