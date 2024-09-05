@@ -718,7 +718,7 @@
 
 ### 关键词部分
 
-'示例关键词': 'base64编码’
+'示例关键词': 'base64编码’    //你可以使用https://tool.chinaz.com/tools/base64.aspx
 
 加密后会是'你好': '5L2g5aW9',
 
@@ -726,13 +726,13 @@
 
 对话请求的是api请求，因此你需要自己配置自己需要的API地址，这里说明下加密方式
 
-加密为AES加密
+加密为AES加密，你可以使用：https://tool.oschina.net/encrypt
 
 参考：
 
-​        const encryptedApiKey = '加密后的编码';
+​        const encryptedApiKey = '加密后的编码';  //这一行是你的ApiKey
 
-​        const passphrase = '你的加密密钥';
+​        const passphrase = '你的加密密钥';  //这一行是你的AES加密密码
 
 ## 注意
 
