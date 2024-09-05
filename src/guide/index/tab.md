@@ -6,6 +6,10 @@
 
 ## 引入
 
+以下两种效果二选一
+
+## 固定右侧位置不变效果
+
 需要引入的为tb.css和tab.js
 
 tb.css代码为
@@ -221,5 +225,247 @@ menu_button.addEventListener('click',function(){
             </div>
         </div>
     </div>
+```
+
+## 全局可拖动效果
+
+初始化位置不变
+
+HTML
+
+```
+<div class="menu-box">
+                            <!-- 图标按钮 -->
+                            <div class="menu-button">
+                                <div class="line-box">
+                                    <div class="line"></div>
+                                    <div class="line"></div>
+                                    <div class="line"></div>
+                                </div>
+                            </div>
+                            <!-- 菜单列表 -->
+                            <div>
+                                <ul class="menu-list">
+                                    <li><a style="color:rgb(252, 246, 246);" href="./e/zhichi/" target="_blank"></i><span>
+                                                🧧赞助支持</span></a></li>
+                                    <li><a style="color:rgb(248, 244, 244);" href="./e/newsletter/"
+                                            target="_blank" ></i><span>📧欢迎订阅</span></a></li>
+                                    <li><a style="color:rgb(248, 244, 244);" href="./home/"></i><span>🌟切换模式</span></a> <!-- id="check1" -->
+                                    </li>
+                                    <li><a style="color:rgb(248, 244, 244);" href="./fw/"
+                                            target="_blank" ></i><span>🎉公共服务</span></a></li>
+                                    <li><a style="color:rgb(248, 244, 244);" href="https://docs.noisework.cn"
+                                            target="_blank"></i><span>💻配置文档</span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+```
+
+CSS
+
+```
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.menu-box {
+    position: fixed; /* 使用固定定位以便不随页面滚动 */
+    z-index: 9999;
+    bottom: 430px;
+    right: 5px;
+    cursor: grab;
+    display: inline-block; /* 以便整体可拖动 */
+}
+
+.menu-button {
+    width: 30px;
+    height: 30px;
+    background-color: #262525e8;
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(13, 13, 14, 0.3);
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    cursor: pointer;
+    transition: 0.2s ease-in;
+}
+
+.menu-button:hover {
+    background-color: #0f0f0fe8;
+    box-shadow: 0 0 0 8px rgba(22, 22, 22, 0.3);
+}
+
+.menu-button .line-box {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: transform 0.3s ease-out;
+}
+
+.menu-button .line {
+    background-color: #fff;
+    width: 100%;
+    height: 2px;
+    border-radius: 2px;
+}
+
+.menu-button .line:first-child {
+    width: 50%;
+    transform-origin: right;
+    transition: transform 0.3s ease-in-out;
+}
+
+.menu-button .line:last-child {
+    width: 50%;
+    align-self: flex-end;
+    transform-origin: left;
+    transition: transform 0.3s ease-in-out;
+}
+
+.menu-list {
+    width: 130px;
+    box-shadow: 0 2px 2px 0 rgba(36, 35, 35, 0.911), 0 1px 5px 0 rgb(32, 32, 32);
+    background-color: #1f1f1fe9;
+    border: 2px solid #343437;
+    border-radius: 8px;
+    list-style: none;
+    padding: 6px;
+    position: absolute;
+    top: -200px; /* 相对于按钮的上方 */
+    left: -128px; /* 从按钮的左侧展开 */
+    opacity: 0;
+    transform: scale(0);
+    transform-origin: bottom right;
+    transition: 0.3s ease;
+    transition-delay: 0.1s;
+}
+
+.menu-list li {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    color: #e4e4eb;
+    cursor: pointer;
+    position: relative;
+}
+
+.menu-list li::before {
+    content: "";
+    width: calc(100% - 24px);
+    height: 1px;
+    background-color: rgba(44, 42, 42, 0.43);
+    position: absolute;
+    bottom: 0;
+    left: 12px;
+}
+
+.menu-list li:last-child::before {
+    display: none;
+}
+.menu-list li:hover {
+    background-color: #127de7de;
+    transition: background-color 0.3s ease; /* 添加过渡效果 */
+}
+.menu-list .fa {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu-list span {
+    font-size: 14px;
+    margin-left: 8px;
+}
+
+.active .line-box {
+    transform: rotate(-45deg);
+}
+
+.active .line-box .line:first-child {
+    transform: rotate(-90deg) translateX(1px);
+}
+
+.active .line-box .line:last-child {
+    transform: rotate(-90deg) translateX(-1px);
+}
+
+.active .menu-list {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.active .menu-list li {
+    animation: fade-in-item 0.4s linear forwards;
+}
+
+.active .menu-list li:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.active .menu-list li:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.active .menu-list li:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.active .menu-list li:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+@keyframes fade-in-item {
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+```
+
+JS
+
+```
+const menu_box = document.querySelector('.menu-box');
+const menu_button = document.querySelector('.menu-button');
+
+menu_button.addEventListener('click', function() {
+    menu_box.classList.toggle('active');
+});
+
+let isDragging = false;
+let startX, startY, initialX, initialY;
+
+menu_box.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    startX = e.clientX;
+    startY = e.clientY;
+    initialX = menu_box.offsetLeft;
+    initialY = menu_box.offsetTop;
+    menu_box.style.cursor = 'grabbing';
+});
+
+document.addEventListener('mousemove', (e) => {
+    if (isDragging) {
+        const dx = e.clientX - startX;
+        const dy = e.clientY - startY;
+        menu_box.style.left = `${initialX + dx}px`;
+        menu_box.style.top = `${initialY + dy}px`;
+    }
+});
+
+document.addEventListener('mouseup', () => {
+    isDragging = false;
+    menu_box.style.cursor = 'grab';
+});
 ```
 
