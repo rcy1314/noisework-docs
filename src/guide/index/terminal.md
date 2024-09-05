@@ -732,7 +732,7 @@
 
 ​        const encryptedApiKey = '加密后的编码';
 
-​        const passphrase = '你的密钥';
+​        const passphrase = '你的加密密钥';
 
 ## 注意
 

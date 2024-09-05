@@ -120,6 +120,10 @@ export default defineConfig({
                 {
                   text: '浮动文字',
                   link: '/guide/index/flotext'
+                },
+                {
+                  text: 'B站收藏夹',
+                  link: '/guide/index/bilibiliindex'
                 }
               ]
             },
