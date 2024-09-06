@@ -61,12 +61,12 @@ export default defineConfig({
                   link: '/guide/intro'
                 },
                 {
-                  text: '快速上手',
-                  link: '/guide/quick-start'
-                },
-                {
                   text: '常见问题',
                   link: '/faq/'
+                },
+                {
+                  text: '快速上手',
+                  link: '/guide/quick-start'
                 }
               ]
             },
