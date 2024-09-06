@@ -6,7 +6,7 @@
 
 ## 问题
 
-### 首页广告位卡片在不是电脑尺寸下也显示了
+## 一、首页广告位卡片在不是电脑尺寸下也显示了
 
 答：跟你的屏幕或浏览器尺寸相关，目前设置的广告位在AD.css中可以找到如下设置
 
@@ -16,17 +16,17 @@
 
 
 
-### 随机的背景图等图片不显示了
+## 二、随机的背景图等图片不显示了
 
  答：引入的URL链接为我个人的cdn加速链接，如果该cdn不工作（服务器欠费停了）的原因可能会造成引入的图片失效，解决方案是更换cdn地址或本地引入图片
 
 
 
-### 修改后打开页面速度变慢变卡
+## 三、修改后打开页面速度变慢变卡
 
 答：本地引入的图片或文件过大、引入的CDN速度过慢、本地浏览器缓存过多等都会造成卡顿
 
-旧版本优化（非卡顿主因）：
+## 四、旧版本优化（非卡顿主因）：
 
 调整首页HTML页面，去除以下代码：
 ![1725621479691](https://jsd.cdn.noisework.cn/gh/rcy1314/tuchuang@main/uPic/1725621479691.png)
@@ -144,8 +144,29 @@
 }
 ```
 
+鼠标在页面载入时的动画优化
+
+Main.css中调整为
+
+```
+.node::before {
+	content: ' ';
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	background-color: transparent;
+	border-radius: 50%;
+	top: 0;
+	left: 0;
+	border: 1px solid #ffffff;
+	transform: scale(1);
+	opacity: 1;
+	transition: opacity 150ms linear, transform 300ms cubic-bezier(0.68, -0.55, 0.27, 1.55), border 300ms linear, background-color 150ms linear;
+  }
+```
 
 
-### 如何修改聊天室为自己的？
+
+### 五、如何修改聊天室为自己的？
 
 答：麻烦查看文档[聊天室介绍](https://docs.noisework.cn/guide/chat.html)并查看Cbox或Dify官方说明文档，发布和嵌入的代码在官方
