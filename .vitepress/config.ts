@@ -22,7 +22,7 @@ export default defineConfig({
             activeMatch: 'https://www.noiseblogs.top/'
           },
           {
-            text: '链接',
+            text: '更多链接',
             items: [
               {
                 text: 'NOISE导航',
