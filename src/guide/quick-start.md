@@ -92,6 +92,8 @@ surge teardown <your-domain>
 
 已修改了最新的缓存service-worker.js文件，如果你在部署时放的图片等文件有点大，记得添加到service-worker.js文件中，会在载入页面时进行缓存从而加快访问速度
 
+
+
 ------
 
 🌈请留意侧边导航栏或点击下方
