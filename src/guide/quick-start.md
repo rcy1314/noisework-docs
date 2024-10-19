@@ -92,8 +92,6 @@ surge teardown <your-domain>
 
 已修改了最新的缓存service-worker.js文件，如果你在部署时放的图片等文件有点大，记得添加到service-worker.js文件中，会在载入页面时进行缓存从而加快访问速度
 
-
-
 ------
 
 🌈请留意侧边导航栏或点击下方
@@ -102,6 +100,7 @@ surge teardown <your-domain>
 
 <details>
 <summary>✅ 文档导航【点击展开】</summary>
+
 
 
 ### index首页
@@ -176,7 +175,7 @@ surge teardown <your-domain>
 
 [配置](https://docs.noisework.cn/guide/right.html)
 
-## 音效效果
+### 音效效果
 
 [配置](https://docs.noisework.cn/guide/sound.html)
 

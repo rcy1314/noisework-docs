@@ -101,6 +101,7 @@ surge teardown <your-domain>
 <details>
 <summary>✅ 文档导航【点击展开】</summary>
 
+
 ### index首页
 
 [概述](https://docs.noisework.cn/guide/index/intro.html)
@@ -173,7 +174,7 @@ surge teardown <your-domain>
 
 [配置](https://docs.noisework.cn/guide/right.html)
 
-## 音效效果
+### 音效效果
 
 [配置](https://docs.noisework.cn/guide/sound.html)
 
