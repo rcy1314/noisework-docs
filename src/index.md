@@ -9,7 +9,7 @@ hero:
   text: 无限多模式个性化.     个人主页引导页
   tagline: 主页配置说明文档
   image:
-    src: /logo3.png
+    src: /logo4.png
     alt: SoybeanAdmin
   actions:
     - theme: brand
