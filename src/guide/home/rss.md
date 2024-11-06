@@ -11,6 +11,12 @@
 
 ![rss2](https://jsd.cdn.noisework.cn/gh/rcy1314/tuchuang@main/uPic/rss2.png)
 
+## 注意
+
+请不要忘记在你的账户中设置API中的推送更新源并和rss.js文件中的源保持一致
+
+![1730905023336](https://s2.loli.net/2024/11/06/z31TswlhSGWfHOP.png)
+
 ## 使用
 
 你需要自己的https://rss2json.com 账户API key

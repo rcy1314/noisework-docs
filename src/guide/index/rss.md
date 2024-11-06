@@ -12,6 +12,12 @@
 
 ![](https://jsd.cdn.noisework.cn/gh/rcy1314/tuchuang@main/20230820/截屏2023-08-20-20.27.12.2eoc9vsplosg.jpg)
 
+## 注意
+
+请不要忘记在你的账户中设置API中的推送更新源并和rss.js文件中的源保持一致
+
+![1730905023336](https://s2.loli.net/2024/11/06/z31TswlhSGWfHOP.png)
+
 ## 使用
 
 除了需要在页面内引入相应的JS和css文件，还需要在body中引入
