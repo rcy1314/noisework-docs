@@ -10,11 +10,15 @@
 
 ![](https://jsd.cdn.noisework.cn/gh/rcy1314/tuchuang@main/uPic/1722253542692.png)
 
-图标部分引入了https://fontawesome.com，你可以通过其引入更多来自它的图标
+## 引入图标
 
-请在登录该图标网站后，引入自己的图标代码,这是完全免费的，但限制是一个月图标浏览量1万次
+可以在官网引入官方的cdn（js）文件后图标代码生效
 
-或者你也可以选择本地引入图标，在官网https://fontawesome.com/download下载即可
+本地引入js文件：在官网https://fontawesome.com/download 下载并引入你自己的js文件即可，可以单独设置仅自己的域名下图标生效
+
+如果你不想引入js文件下让图标生效则可以使用旧版fontawesome
+
+你可以在https://fontawesome.com.cn/v4/cheatsheet 这里找到
 
 ![1726539996829](https://jsd.cdn.noisework.cn/gh/rcy1314/tuchuang@main/uPic/1726539996829.png)
 
