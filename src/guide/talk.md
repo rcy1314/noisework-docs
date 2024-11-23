@@ -6,9 +6,9 @@
 
 推荐Vercel 部署（绑定自己的域名）
 
-[![Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fwalinejs%2Fwaline%2Ftree%2Fmain%2Fexample)
+https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fwalinejs%2Fwaline%2Ftree%2Fmain%2Fexample
 
-1. 点击上方按钮，跳转至 Vercel 进行 Server 端部署。
+1. 点击上方，跳转至 Vercel 进行 Server 端部署。
 
 首页预览
 
@@ -30,11 +30,11 @@ Home页预览
 
 2. 点击左上角 [创建应用](https://console.leancloud.app/apps) 并起一个你喜欢的名字 (请选择免费的开发版):
 
-   ![创建应用](https://waline.js.org/assets/leancloud-1-CucZPnJ0.png)创建应用
+   ![创建应用](https://s2.loli.net/2024/11/23/BSHCin9Z5UF1IbD.png)创建应用
 
 3. 进入应用，选择左下角的 `设置` > `应用 Key`。你可以看到你的 `APP ID`,`APP Key` 和 `Master Key`。请记录它们，以便后续使用。
 
-   ![ID 和 Key](https://waline.js.org/assets/leancloud-2-C9bCeSu_.png)
+   ![ID 和 Key](https://s2.loli.net/2024/11/23/QZrEvCpF9b4NcTk.png)
 
 ## 代码引入
 
