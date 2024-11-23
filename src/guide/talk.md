@@ -66,7 +66,9 @@ head处添加
 <link rel="stylesheet" href="./css/waline.css"/>
 ```
 
-页脚处添加
+<u>页脚处添加</u>
+
+
 
 ```
 <!-- 引入评论 -->		
@@ -79,8 +81,8 @@ head处添加
       requiredMeta: ['mail','nick'],
       pageview: true,
       search: true,
-      wordLimit: 50,
-      pageSize: 5,
+      wordLimit: 50, //最大评论字数
+      pageSize: 5,  //每页显示的评论数
       avatar: 'monsterid',
 	  emoji: [
              'https://unpkg.com/@waline/emojis@1.2.0/tieba',
@@ -92,6 +94,10 @@ head处添加
      });
   </script>
 ```
+
+## 其中页脚部分很重要‼️请正确配置你在服务端的数据，请在配置后删除//后注释的内容
+
+
 
 我对waline.css做了一点调整，代码为：
 
