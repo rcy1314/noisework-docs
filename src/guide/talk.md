@@ -1560,7 +1560,9 @@ SMTP_HOST：`smtp.qq.com`
 
 AUTHOR_EMAIL：`1129159201@qq.com`
 
-------
+
+
+
 
 其中，`LEAN_ID`, `LEAN_KEY` 和 `LEAN_MASTER_KEY` 。它们的值分别对应准备中在 LeanCloud 中获得的 `APP ID`, `APP KEY`, `Master Key`。
 
