@@ -1530,37 +1530,51 @@ window.addEventListener('DOMContentLoaded', function() {
 
 变量可以参考我的：
 
-MAIL_TEMPLATE_ADMIN：`<div style="border-top:2px solid #12ADDB;box-shadow:0 1px 3px #AAAAAA;line-height:180%;padding:0 15px 12px;margin:50px auto;font-size:12px;">    <h2 style="border-bottom:1px solid #DDD;font-size:14px;font-weight:normal;padding:13px 0 10px 8px;">        您在<a style="text-decoration:none;color: #12ADDB;" href="{{site.url}}" target="_blank">{{site.name}}</a>上的文章有了新的评论    </h2>    <p><strong>{{self.nick}}</strong> 回复说：</p>    <div style="background-color: #f5f5f5;padding: 10px 15px;margin:18px 0;word-wrap:break-word;">        {{self.comment | safe}}    </div>    <p>您可以点击<a style="text-decoration:none; color:#12addb" href="{{site.postUrl | safe}}" target="_blank">查看回复的完整内容</a></p>    <br/></div>`
+MAIL_TEMPLATE_ADMIN：
 
-MAIL_TEMPLATE：`<div style="border-top: 2px solid #12ADDB; box-shadow: 0 1px 3px #AAAAAA; line-height: 180%; padding: 0 15px 12px; margin: 50px auto; font-size: 12px;">  <h2 style="border-bottom: 1px solid #DDD; font-size: 14px; font-weight: normal; padding: 13px 0 10px 8px;">            您在<a style="text-decoration: none; color: #12ADDB;" href="{{ site.url }}" target="_blank">{{ site.name }}</a>上的评论有了新的回复  </h2>  <div style="padding: 0 12px 0 12px; margin-top: 18px">    <div style="background-color: #f5f5f5; padding: 10px 15px; margin: 18px 0; word-wrap: break-word;">{{ parent.comment | safe }}</div>    <p><strong>{{ self.nick }}</strong> 回复说：</p>    <div style="background-color: #f5f5f5; padding: 10px 15px; margin: 18px 0; word-wrap: break-word;">{{ self.comment | safe }}</div>    <p>您可以点击<a style="text-decoration: none; color: #12addb" href="{{ site.postUrl }}" target="_blank">查看回复的完整内容</a></p>    <br>  </div></div>`
+```
+<div style="border-top:2px solid #12ADDB;box-shadow:0 1px 3px #AAAAAA;line-height:180%;padding:0 15px 12px;margin:50px auto;font-size:12px;">    <h2 style="border-bottom:1px solid #DDD;font-size:14px;font-weight:normal;padding:13px 0 10px 8px;">        您在<a style="text-decoration:none;color: #12ADDB;" href="{{site.url}}" target="_blank">{{site.name}}</a>上的文章有了新的评论    </h2>    <p><strong>{{self.nick}}</strong> 回复说：</p>    <div style="background-color: #f5f5f5;padding: 10px 15px;margin:18px 0;word-wrap:break-word;">        {{self.comment | safe}}    </div>    <p>您可以点击<a style="text-decoration:none; color:#12addb" href="{{site.postUrl | safe}}" target="_blank">查看回复的完整内容</a></p>    <br/></div>
+```
 
-MAIL_SUBJECT：`您在{{site.name}}上的评论收到了回复`
+MAIL_TEMPLATE：
 
-MAIL_SUBJECT_ADMIN：`{{site.name}}上有新评论了`
+```
+<div style="border-top: 2px solid #12ADDB; box-shadow: 0 1px 3px #AAAAAA; line-height: 180%; padding: 0 15px 12px; margin: 50px auto; font-size: 12px;">  <h2 style="border-bottom: 1px solid #DDD; font-size: 14px; font-weight: normal; padding: 13px 0 10px 8px;">            您在<a style="text-decoration: none; color: #12ADDB;" href="{{ site.url }}" target="_blank">{{ site.name }}</a>上的评论有了新的回复  </h2>  <div style="padding: 0 12px 0 12px; margin-top: 18px">    <div style="background-color: #f5f5f5; padding: 10px 15px; margin: 18px 0; word-wrap: break-word;">{{ parent.comment | safe }}</div>    <p><strong>{{ self.nick }}</strong> 回复说：</p>    <div style="background-color: #f5f5f5; padding: 10px 15px; margin: 18px 0; word-wrap: break-word;">{{ self.comment | safe }}</div>    <p>您可以点击<a style="text-decoration: none; color: #12addb" href="{{ site.postUrl }}" target="_blank">查看回复的完整内容</a></p>    <br>  </div></div>
+```
 
-LEAN_MASTER_KEY：`t5qUSzHy1yhoXdwwAMjL`
+MAIL_SUBJECT：
 
-LEAN_KEY：`oATr2oo7lShZo7mfhcqMV`
+```
+您在{{site.name}}上的评论收到了回复
+```
 
-LEAN_ID：`ByYTAYhr6Gnp9fd5x7G-MdYXbMMI`
+MAIL_SUBJECT_ADMIN：
 
-SITE_URL：`https://www.noisework.cn`
+```
+{{site.name}}上有新评论了
+```
 
-SITE_NAME：`NOISE主页`
+LEAN_MASTER_KEY：t5qUSzHy1yhoXdwwAMjL
 
-SMTP_SECURE：`SSL`
+LEAN_KEY：oATr2oo7lShZo7mfhcqMV
 
-SMTP_USER：`1129159201@qq.com`
+LEAN_ID：ByYTAYhr6Gnp9fd5x7G-MdYXbMMI
 
-SMTP_PORT：`465`
+SITE_URL：https://www.noisework.cn
 
-SMTP_PASS：`mlykzkseeg`
+SITE_NAME：NOISE主页
 
-SMTP_HOST：`smtp.qq.com`
+SMTP_SECURE：SSL
 
-AUTHOR_EMAIL：`1129159201@qq.com`
+SMTP_USER：1129159201@qq.com
 
+SMTP_PORT：465
 
+SMTP_PASS：mlykzkseeg
+
+SMTP_HOST：smtp.qq.com
+
+AUTHOR_EMAIL：1129159201@qq.com
 
 
 
