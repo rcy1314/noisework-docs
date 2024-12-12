@@ -513,7 +513,7 @@ const encryptedApiEndpoints = {
   hellogithub: '你的加密API'
 };
 function decryptApi(encryptedApi) {
-  const decrypted = CryptoJS.AES.decrypt(encryptedApi, 'noise'); 
+  const decrypted = CryptoJS.AES.decrypt(encryptedApi, '加密的密码'); 
   return decrypted.toString(CryptoJS.enc.Utf8);
 }
 const apiEndpoints = {};
