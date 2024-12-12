@@ -141,11 +141,12 @@ npm run start
 
 ## 组件引入
 
-需要在html中引入hotindex.js、hotindex.css
+需要在html中引入hotindex.js、hotindex.css、crypto-js.js
 
 ```
 <link rel="stylesheet" href="./css/hotindex.css"> 
  <script src="js/hotindex.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
 ```
 
 在html中你想添加组件的地方引入
