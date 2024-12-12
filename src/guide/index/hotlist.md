@@ -482,6 +482,14 @@ npm run start
     grid-template-columns: repeat(1, 1fr);
   }
 }
+/* 媒体查询：屏幕宽度小于 768px 时生效 */
+@media (max-width: 768px) {
+  .hotcard {
+    width: 225px; /* 缩小宽度 */
+    height: 250px; /* 缩小高度 */
+    padding: 15px; /* 缩小内边距 */
+  }
+}
 ```
 
 hotindex.js代码为
