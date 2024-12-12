@@ -8,9 +8,14 @@
 
 项目部署：https://github.com/imsyy/DailyHotApi
 
-下方来自于项目仓库说明
+
 
 ![](https://s2.loli.net/2024/12/12/BY7gTs8qujEZz4W.png)
+
+<details>
+<summary>✅ API部署【点击展开】</summary>
+
+下方来自于项目仓库说明
 
 ### Docker 部署
 
@@ -115,6 +120,10 @@ npm run start
 
 
 本项目支持使用 [Zeabur](https://zeabur.com/) 一键部署，请先将本项目 fork 到您的仓库中，即可使用一键部署。
+
+
+
+</details>
 
 ## 组件引入
 
@@ -288,7 +297,7 @@ npm run start
 
 .hotcard {
   width: 300px; /* 固定宽度 */
-  height: 360px; /* 固定高度 */
+  height: 300px; /* 固定高度 */
   border-radius: 15px;
   position: relative;
   padding: 20px;
@@ -583,7 +592,7 @@ setInterval(() => {
 }, 3600000); // 3600000 毫秒 = 1 小时
 ```
 
-除了接口本身的限制外，我还增加了自动1小时刷新数据，避免每次进入页面都请求，当然，你可以点击刷新图标来获取最新的请求。
+除了接口本身的限制外，我还增加了自动1小时刷新数据，避免每次进入页面都请求，当然，你可以点击刷新图标来获取最新的请求，此外，如想配置更多卡片及热榜数据请查看其它API接口/all
 
 ## ⚠️注意
 
