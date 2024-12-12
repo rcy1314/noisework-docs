@@ -1,8 +1,22 @@
 # 热榜组件
 
+![](https://s2.loli.net/2024/12/12/HG658vIus4pLqtk.png)
+
 该组件是通过请求热榜API数据而展示在页面上的，引入效果已定制化处理，和主页其它组件保持一致性，同时对请求的API做了AES加密，在修改API时需要你写入加密后的接口（你也可以使用我的，但我不保证能永久使用）
 
-![1733995244220](https://s2.loli.net/2024/12/12/HG658vIus4pLqtk.png)
+AES加密，你可以使用：https://tool.oschina.net/encrypt
+
+示例代码
+
+```
+const encryptedApiEndpoints = {
+  zhihu: '你的加密api接口'
+};
+function decryptApi(encryptedApi) {
+  const decrypted = CryptoJS.AES.decrypt(encryptedApi, '加密密码'); 
+  return decrypted.toString(CryptoJS.enc.Utf8);
+}
+```
 
 ## API
 
