@@ -128,6 +128,10 @@ export default defineConfig({
                 {
                   text: 'B站收藏夹',
                   link: '/guide/index/bilibiliindex'
+                },
+                {
+                  text: '热榜组件',
+                  link: '/guide/index/hotlist'
                 }
               ]
             },
