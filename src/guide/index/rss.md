@@ -179,8 +179,6 @@ lastUpdateTimes[source] = pubDate;
 
 ![1734069871601](https://s2.loli.net/2024/12/13/RDZruLVdQCJImvH.png)
 
-## 纯文字版
-
 除了需要在页面内引入相应的JS和css文件，还需要在body中引入
 
 ```
