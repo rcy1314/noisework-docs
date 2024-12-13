@@ -130,7 +130,7 @@ export default defineConfig({
                   link: '/guide/index/bilibiliindex'
                 },
                 {
-                  text: '热榜组件',
+                  text: '热榜卡片组件',
                   link: '/guide/index/hotlist'
                 }
               ]

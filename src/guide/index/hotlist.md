@@ -1,4 +1,4 @@
-# 热榜组件
+# 热榜卡片组件
 
 ![](https://s2.loli.net/2024/12/12/HG658vIus4pLqtk.png)
 
