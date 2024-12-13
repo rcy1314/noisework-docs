@@ -192,7 +192,6 @@ home-rss.js：
 ```
 // 目前已修改为私有的rss2json的api key进行监测更新，除本站外这个key无法加入到其它域名，请修改为自己的key，默认每1小时更新限制
 // 要使用完全免费的rss2json的api调用获取代码请查看https://www.noiseblogs.top/posts/fcbd92b4或访问https://noisevip.cn/17001.html
-// JavaScript代码-rss
 var rssContainer = document.querySelector('.rss-container');
 var rssItem = document.getElementById('rss-item');
 var rssSources = [
@@ -202,7 +201,7 @@ var rssSources = [
 ];
 var currentRssIndex = 0;
 var currentRssItemIndex = 0;
-var apiKey = 'YOUR_API_KEY'; // 替换为你的API密钥
+var apiKey = 'apiKey'; // 替换为你的API密钥
 var lastUpdateTimes = {}; // 记录每个RSS源的最后更新时间
 
 function fetchRssItems(url) {
@@ -225,12 +224,6 @@ function fetchRssItems(url) {
         }
 
         var thumbnailUrl = thumbnails.length > 0 ? thumbnails[0] : '';
-        if (!thumbnailUrl && thumbnails.length > 1) {
-          thumbnailUrl = thumbnails[1];
-        }
-        if (!thumbnailUrl && thumbnails.length > 2) {
-          thumbnailUrl = thumbnails[2];
-        }
 
         var rssLink = document.createElement('div');
         rssLink.classList.add('rss-link');
@@ -243,6 +236,7 @@ function fetchRssItems(url) {
 
         rssItem.appendChild(rssLink);
 
+        // 递增当前项目索引
         currentRssItemIndex = (currentRssItemIndex + 1) % data.items.length;
         if (currentRssItemIndex === 0) {
           currentRssIndex = (currentRssIndex + 1) % rssSources.length;
@@ -261,16 +255,11 @@ function showError() {
   rssItem.innerHTML = '<p>错误！请检查您的RSS源或Api-key配置是否正确！</p>';
 }
 
-
-// 获取并解析所有RSS信息源的数据
-rssSources.forEach(source => {
-  fetchRssItems(source);
-});
-
+// 初始加载时显示第一个RSS项
+fetchRssItems(rssSources[currentRssIndex]);
 
 // 每隔8秒变换一次信息
 setInterval(function() {
-  currentRssIndex = (currentRssIndex + 1) % rssSources.length;
   fetchRssItems(rssSources[currentRssIndex]);
 }, 8000);
 
@@ -288,9 +277,18 @@ setInterval(function() {
           // 更新最后更新时间
           lastUpdateTimes[source] = pubDate;
         }
+      })
+      .catch(error => {
+        console.error('Update check error:', error);
       });
   });
 }, 3600000); // 每隔1小时检查一次RSS源是否有更新
+
+// 点击关闭按钮后隐藏容器
+var closeButton = document.getElementById('close-button');
+closeButton.addEventListener('click', function() {
+  rssContainer.style.display = 'none';
+});
 
 ```
 
@@ -299,33 +297,36 @@ home-rss.css：
 ```
 /* noise-home主页rss-CSS样式 */
 .rss-container {
-  display: none;
+  position: fixed;
+  color: white; 
+  display: flex;
+  text-align: center;
+  flex-direction: column; /* 使内容垂直排列 */
+  justify-content: center; /* 水平居中 */
+  align-items: center; /* 垂直居中 */
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8); /* 半透明黑色背景 */
+  overflow: hidden; /* 防止内容溢出 */
 }
 
-@media only screen {
-  .rss-container {
-    position: fixed;
-    color: white; 
-    display: flex;
-    text-align: center;
-    display: block;
-    overflow: hidden; /* 防止内容溢出 */
-  }
+/* 修改选择器为 .rss-link a */
+.rss-link a {
+  font-size: 13px;
+  margin-bottom: 2px;
+  color: white;
+  text-decoration: none;
+  display: block; /* 使链接块级显示，确保图片在其下方 */
+  width: 100%; /* 使链接宽度与容器一致 */
+  text-align: center; /* 使文本居中 */
+}
 
-  /* 修改选择器为 .rss-link a */
-  .rss-link a {
-    font-size: 13px;
-    margin-bottom: 2px;
-    color: white;
-   
-  }
-
-  /* 图片样式 */
-  .rss-link img {
-    width: 100%; /* 图片宽度自适应容器 */
-    height: auto; /* 高度按比例自适应 */
-    border-radius: 5px; /* 可选：给图片添加圆角 */
-  }
+/* 图片样式 */
+.rss-link img {
+  width: 100%; /* 图片宽度与容器一致 */
+  height: auto; /* 高度按比例自适应 */
+  border-radius: 5px; /* 可选：给图片添加圆角 */
+  margin-top: 5px; /* 使图片与文本之间有间距 */
 }
 
 ```
