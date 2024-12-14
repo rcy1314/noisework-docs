@@ -6,6 +6,8 @@
 
 ## 一、使用https://60s.viki.moe/60s?v2=1
 
+该API开源地址: https://github.com/vikiboss/60s
+
 ## 引入
 
 页面右侧引入
