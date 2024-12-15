@@ -27,7 +27,7 @@
 ## 相关
 
 - 配置中添加了预加载模式，来自http://instantclick.io/license
-- 鼠标效果-引入来源https://github.com/hmongouachon/NodeCursor
+- 圆点鼠标效果-引入来源https://github.com/hmongouachon/NodeCursor
 - 动态网页标题部分可根据需要自行修改
 - 在注释中找到相关版本号部分为浏览器缓存，每次更改后会被强制刷新
 
