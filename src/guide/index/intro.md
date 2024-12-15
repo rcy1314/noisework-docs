@@ -24,6 +24,12 @@
 
 ![1722255972032](https://jsd.cdn.noisework.cn/gh/rcy1314/tuchuang@main/uPic/1722255972032.png)
 
+## 低端设备兼容
+
+在最近更新中添加了兼容低端无图形加速设备（如linux）的文件（主要移除背景前景的视觉差效果），文件为lowmain.js
+
+如果你想在低端设备中使用，可以在首页的HTML中的`<script src="js/main.js"></script>`改为`<script src="js/lowmain.js"></script>`，有图形加速及有正常显卡的设备请不要修改
+
 ## 相关
 
 - 配置中添加了预加载模式，来自http://instantclick.io/license
