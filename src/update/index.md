@@ -1,6 +1,7 @@
 ## 2024
 
-- 首页增加低端设备下无显卡无图形加速时的兼容文件-lowmain.js（前往github或index首页[概述](https://docs.noisework.cn/guide/index/intro.html)中查看
+- 增加自动检测性能及图形加速来自动切换main.js文件
+- 首页增加低端设备下无显卡无图形加速时的兼容文件-lowmain.js
 - 调整首页鼠标样式为黑猫光标，原有样式已注释保留
 - 更新main.js文件，优化首页页面性能
 - 调整rss卡片组件为图文版
