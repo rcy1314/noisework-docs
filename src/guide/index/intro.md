@@ -30,7 +30,7 @@
 
 已增加自动检测性能及图形加速来自动切换
 
-可在index首页最下方找到
+可在index首页head标签处找到
 
 ```
 <!--根据设备性能自动切换main.js-->  
@@ -64,6 +64,7 @@
                 return false;
             }
         }
+
         async function loadScriptBasedOnDetection() {
             const isLagging = await detectPageLag();
             const hasAcceleration = hasWebGL();
@@ -72,15 +73,19 @@
                 // 卡顿或无图形加速
                 const script = document.createElement('script');
                 script.src = 'js/lowmain.js';
-                document.body.appendChild(script);
+                script.async = true; // 确保异步加载
+                document.head.appendChild(script);
             } else {
                 // 无卡顿且有图形加速
                 const script = document.createElement('script');
                 script.src = 'js/main.js';
-                document.body.appendChild(script);
+                script.async = true; // 确保异步加载
+                document.head.appendChild(script);
             }
         }
-        window.addEventListener('load', loadScriptBasedOnDetection);
+
+        // 立即执行检测
+        loadScriptBasedOnDetection();
     </script>
 ```
 
