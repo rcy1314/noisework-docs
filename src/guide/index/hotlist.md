@@ -4,20 +4,6 @@
 
 该组件是通过请求热榜API数据而展示在页面上的，引入效果已定制化处理，和主页其它组件保持一致性，同时对请求的API做了AES加密，在修改API时需要你写入加密后的接口（请改为你自己的！）
 
-AES加密，你可以使用：https://tool.oschina.net/encrypt
-
-示例代码
-
-```
-const encryptedApiEndpoints = {
-  zhihu: '你的加密api接口'
-};
-function decryptApi(encryptedApi) {
-  const decrypted = CryptoJS.AES.decrypt(encryptedApi, '加密密码'); 
-  return decrypted.toString(CryptoJS.enc.Utf8);
-}
-```
-
 ## API
 
 项目部署：https://github.com/imsyy/DailyHotApi
@@ -514,6 +500,113 @@ ALLOWED_HOST=""
 
 hotindex.js代码为
 
+### 不加密js
+
+```
+// 定义API接口
+    const apiEndpoints = {
+      zhihu: '你的域名/zhihu',
+      weibo: '你的域名/sina',
+      bilibili: '你的域名/bilibili',
+      douyin: '你的域名/douyin',
+      baidu: '你的域名/tieba',
+      toutiao: '你的域名toutiao',
+      v2ex: '你的域名/v2ex',
+      hellogithub: '你的域名/hellogithub'
+    };
+
+    // 使用 fetch API 从不同的API端点请求数据
+    function fetchData(url, target) {
+      const updateTimeElement = document.getElementById(target).querySelector('.update-time');
+      updateTimeElement.textContent = '数据更新时间: 加载中...';
+      
+      fetch(url)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then(data => {
+          console.log('Data received from', url, data);
+          loadData(data.data, target);
+          updateTimeElement.textContent = `数据更新时间: ${new Date().toLocaleString()}`;
+          saveDataToLocalStorage(target, data.data); // 保存数据到本地存储
+        })
+        .catch(error => {
+          console.error('Error fetching data from', url, error);
+          updateTimeElement.textContent = `数据更新时间: 错误`;
+          const list = document.getElementById(target + '-list');
+          const li = document.createElement('li');
+          li.textContent = `Error: ${error.message}`;
+          list.appendChild(li);
+        });
+    }
+
+    function loadData(data, target) {
+      const list = document.getElementById(target + '-list');
+      list.innerHTML = ''; // 清空列表
+      if (Array.isArray(data)) {
+        data.forEach((item, index) => {
+          const li = document.createElement('li');
+          li.textContent = item.title || 'No title';
+          li.setAttribute('data-index', `${index + 1}.`);
+          const url = (window.innerWidth > 768) ? item.url : item.mobileUrl || '#';
+          li.addEventListener('click', () => {
+            window.open(url, '_blank');
+          });
+          list.appendChild(li);
+        });
+      } else {
+        const li = document.createElement('li');
+        li.textContent = 'No data received';
+        list.appendChild(li);
+      }
+    }
+
+    function saveDataToLocalStorage(target, data) {
+      localStorage.setItem(target, JSON.stringify(data));
+    }
+
+    function loadFromLocalStorage(target) {
+      const storedData = localStorage.getItem(target);
+      if (storedData) {
+        const data = JSON.parse(storedData);
+        const updateTimeElement = document.getElementById(target).querySelector('.update-time');
+        updateTimeElement.textContent = `数据更新时间: ${new Date().toLocaleString()}`;
+        loadData(data, target);
+      }
+    }
+
+    function refreshData(target) {
+      const url = apiEndpoints[target];
+      if (url) {
+        fetchData(url, target);
+      } else {
+        console.error('Unknown target:', target);
+      }
+    }
+
+    // 页面加载时初始化数据
+    document.addEventListener('DOMContentLoaded', () => {
+      const targets = ['zhihu', 'weibo', 'bilibili', 'douyin', 'baidu', 'toutiao', 'v2ex', 'hellogithub'];
+      targets.forEach(target => {
+        loadFromLocalStorage(target);
+        // 初始加载数据
+        fetchData(apiEndpoints[target], target);
+      });
+    });
+
+    // 每小时自动刷新页面
+    setInterval(() => {
+      location.reload();
+    }, 3600000); // 3600000 毫秒 = 1 小时
+```
+
+
+
+### AES加密JS
+
 ```
 const encryptedApiEndpoints = {
   zhihu: '你的加密API',
@@ -621,6 +714,22 @@ setInterval(() => {
 ```
 
 除了接口本身的限制外，我还增加了自动1小时刷新数据，避免每次进入页面都请求，当然，你可以点击刷新图标来获取最新的请求，此外，如想配置更多卡片及热榜数据请查看其它API接口/all
+
+AES加密，你可以使用：https://tool.oschina.net/encrypt
+
+示例代码
+
+```
+const encryptedApiEndpoints = {
+  zhihu: '你的加密api接口'
+};
+function decryptApi(encryptedApi) {
+  const decrypted = CryptoJS.AES.decrypt(encryptedApi, '加密密码'); 
+  return decrypted.toString(CryptoJS.enc.Utf8);
+}
+```
+
+## 
 
 ## 滑动音效添加
 
