@@ -125,19 +125,6 @@ npm run start
 
 </details>
 
-AES加密是为了防止别人查看源码后乱调用接口造成损失，不过该api也自带限制允许调用的环境变量，env中添加
-
-```
-# 允许的域名
-ALLOWED_DOMAIN="*"
-
-# 允许的主域名
-## 若填写该项，将忽略 ALLOWED_DOMAIN
-ALLOWED_HOST=""
-```
-
-
-
 ## 组件引入
 
 需要在html中引入hotindex.js、hotindex.css、crypto-js.js
