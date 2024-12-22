@@ -18,8 +18,7 @@ export default defineConfig({
           },
           {
             text: '博客',
-            link: 'https://www.noiseblogs.top',
-            activeMatch: 'https://www.noiseblogs.top/'
+            link: 'https://www.noiseblogs.top'
           },
           {
             text: '更多链接',
