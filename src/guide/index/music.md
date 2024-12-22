@@ -1615,3 +1615,9 @@ HTML代码为
 data-id为网易云音乐歌单id
 
 autoplay默认关闭自动播放
+
+
+
+注：受大陆DNS线路及一些地方运营商屏蔽的影响，如果你的组件不正常显示（跟你部署的网站有关）可以使用官方的cdn线路，如
+
+<script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
