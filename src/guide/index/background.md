@@ -346,6 +346,14 @@ print("JavaScript文件已更新")
 
 保存代码文件为images.py，放到suiji-picture.js的同目录下，安装好依赖，修改后你的路径后运行即可
 
+安装依赖
+
+```
+pip install requests pillow
+```
+
+
+
 ### 运行脚本
 
 确保你已经安装了 `requests` 和 `Pillow` 库，然后运行脚本：
