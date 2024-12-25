@@ -342,6 +342,10 @@ print("JavaScript文件已更新")
 
 ```
 
+## 使用
+
+保存代码文件为images.py，放到suiji-picture.js的同目录下，安装好依赖，修改后你的路径后运行即可
+
 ### 运行脚本
 
 确保你已经安装了 `requests` 和 `Pillow` 库，然后运行脚本：
@@ -349,7 +353,7 @@ print("JavaScript文件已更新")
 
 
 ```
-python download_and_convert_images.py
+python3 images.py
 ```
 
 这将读取 `suiji-picture.js` 文件，下载图片，转换为 WebP 格式，并将新的文件名写回到原始的 JavaScript 文件中。
