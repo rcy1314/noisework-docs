@@ -2,6 +2,8 @@
 
 ![1722262172960](https://jsd.cdn.noisework.cn/gh/rcy1314/tuchuang@main/uPic/1722262172960.png)
 
+**新增python一键导出js文件内链接图片到指定目录并自动转换为webp格式图片自动替换到js文件内，代码在最后**
+
 ## 核心
 
 在main.css中可找到默认的前景和背景设置
@@ -263,3 +265,91 @@ var imageUrls = [
 
 背景图分辨率为1920*1080
 如果为了加载速度，你可适当进行压缩和调小一点的分辨率，记得在service-worker.js缓存这些图片
+
+## 一键提取转换并替换为webp
+
+
+
+代码使用python制作，如果你想用这个脚本，请先安装好python
+
+
+
+```python
+import os
+import requests
+import re
+from PIL import Image
+
+# 读取文件-指定替换提取的js文件
+file_path = 'suiji-picture.js'
+with open(file_path, 'r', encoding='utf-8') as file:
+    content = file.read()
+
+# 提取图片URL
+url_pattern = re.compile(r'https://[^\s\'"\]\(]+')
+urls = url_pattern.findall(content)
+
+# 打印匹配到的URL，以便调试
+print("匹配到的URL列表:", urls)
+
+# 定义保存图片的文件夹（！请修改为你想保存的目录）
+save_folder = '/assets/suijpic'
+os.makedirs(save_folder, exist_ok=True)
+
+# 定义一个字典来保存原URL和新的WebP URL
+url_mapping = {}
+
+# 下载图片并转换为WebP格式
+for url in urls:
+    try:
+        # 检查URL是否以http或https开头
+        if not url.startswith('http'):
+            print(f'Invalid URL: {url}')
+            continue
+
+        response = requests.get(url)
+        if response.status_code == 200:
+            # 提取文件名
+            original_file_name = os.path.basename(url)
+            original_file_path = os.path.join(save_folder, original_file_name)
+            with open(original_file_path, 'wb') as file:
+                file.write(response.content)
+            print(f'Downloaded {original_file_name}')
+
+            # 读取图片并转换为WebP格式
+            image = Image.open(original_file_path)
+            webp_file_name = os.path.splitext(original_file_name)[0] + '.webp'
+            webp_file_path = os.path.join(save_folder, webp_file_name)
+            image.save(webp_file_path, format='WEBP')
+            print(f'Converted {original_file_name} to {webp_file_name}')
+
+            # 保存原URL和新的WebP URL的映射
+            url_mapping[url] = webp_file_name
+        else:
+            print(f'Failed to download {url}, status code: {response.status_code}')
+    except Exception as e:
+        print(f'Error downloading {url}: {e}')
+
+# 更新JavaScript文件
+for original_url, webp_url in url_mapping.items():
+    content = content.replace(original_url, f'{save_folder}/{webp_url}')
+
+# 将更新后的内容写回文件
+with open(file_path, 'w', encoding='utf-8') as file:
+    file.write(content)
+
+print("JavaScript文件已更新")
+
+```
+
+### 运行脚本
+
+确保你已经安装了 `requests` 和 `Pillow` 库，然后运行脚本：
+
+
+
+```
+python download_and_convert_images.py
+```
+
+这将读取 `suiji-picture.js` 文件，下载图片，转换为 WebP 格式，并将新的文件名写回到原始的 JavaScript 文件中。
