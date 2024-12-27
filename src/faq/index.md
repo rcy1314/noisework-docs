@@ -6,30 +6,52 @@
 
 ## 问题
 
-## 一、首页广告位卡片在不是电脑尺寸下也显示了
+## 一、本地预览时不显示logo及相对路径的图片？
+
+请改为链接引入或本地绝对路径片后以下命令启动一个简单的HTTP服务器
+
+- Python 3
+
+  
+
+  ```
+  python3 -m http.server 8000
+  ```
+
+- Node.js
+
+  
+
+  ```
+  npx http-server .
+  ```
+
+然后在浏览器中访问 `http://localhost:8000` 来查看
+
+## 二、首页广告位卡片在不是电脑尺寸下也显示了
 
 答：跟你的屏幕或浏览器尺寸相关，目前设置的广告位在AD.css中可以找到如下设置
 
-![b191d3da58a002800fcce863d2fd16ea](https://jsd.cdn.noisework.cn/gh/rcy1314/tuchuang@main/uPic/b191d3da58a002800fcce863d2fd16ea.JPG)
+![b191d3da58a002800fcce863d2fd16ea](https://fastly.jsdelivr.net/gh/rcy1314/tuchuang@main/uPic/b191d3da58a002800fcce863d2fd16ea.JPG)
 
  如果你在用平板一类的尺寸可以自定义为600px以上的尺寸
 
 
 
-## 二、随机的背景图等图片不显示了
+## 三、随机的背景图等图片不显示了
 
  答：引入的URL链接为我个人的cdn加速链接，如果该cdn不工作（服务器欠费停了）的原因可能会造成引入的图片失效，解决方案是更换cdn地址或本地引入图片
 
 
 
-## 三、修改后打开页面速度变慢变卡
+## 四、修改后打开页面速度变慢变卡
 
 答：本地引入的图片或文件过大、引入的CDN速度过慢、本地浏览器缓存过多等都会造成卡顿
 
 ## 四、旧版本优化（非卡顿主因）：
 
 调整首页HTML页面，去除以下代码：
-![1725621479691](https://jsd.cdn.noisework.cn/gh/rcy1314/tuchuang@main/uPic/1725621479691.png)
+![1725621479691](https://fastly.jsdelivr.net/gh/rcy1314/tuchuang@main/uPic/1725621479691.png)
 
 调整main.css中对于网站合集滑动交互的定义：
 
