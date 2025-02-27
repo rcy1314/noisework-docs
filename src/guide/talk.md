@@ -4,6 +4,20 @@
 
 使用前请先查看官方指南：https://waline.js.org
 
+⚠️：新版Waline默认允许用户表达对文章内容的反应。
+
+但主页并不适合这个功能，请参考官方参数关闭该功能！
+
+官方：
+
+`reaction: true, // 开启反应`
+
+主页中清改为
+
+`reaction: 'true',` 
+
+部署
+
 推荐Vercel 部署（绑定自己的域名）
 
 https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fwalinejs%2Fwaline%2Ftree%2Fmain%2Fexample
@@ -76,6 +90,7 @@ head处添加
     import { init } from 'https://unpkg.com/@waline/client@v3/dist/waline.js';
     init({
       el: '#waline',
+      reaction: 'true', 
       serverURL: 'https://ment.noisework.cn', //改为你的服务端地址
 	  meta: ['nick','mail','link'],
       requiredMeta: ['mail','nick'],
