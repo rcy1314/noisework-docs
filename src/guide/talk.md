@@ -14,7 +14,7 @@
 
 主页中清改为
 
-`reaction: 'true',` 
+`reaction: false,` 
 
 部署
 
