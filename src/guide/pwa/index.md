@@ -38,6 +38,22 @@ html部分：
  <link rel="manifest" href="manifest.json">
 ```
 
+开启延迟加载可避免过多请求阻塞：
+
+```
+<script>
+       if ('serviceWorker' in navigator) {
+    // 延迟注册Service Worker
+    setTimeout(function() {
+        navigator.serviceWorker.register('service-worker.js', {
+            scope: '/',
+            updateViaCache: 'none'
+        }).catch(console.error);
+    }, 2000);
+}
+    </script>
+```
+
 重要的是service-worker.js和manifest.json，其中service-worker.js为工作缓存文件，manifest.json为记录页面配置信息
 
 service-worker.js示例代码
@@ -236,7 +252,44 @@ cleanUpCache();
 
 ```
 
+开启原生压缩（在上方代码增加）
 
+```
+self.addEventListener('fetch', function(event) {
+  event.respondWith(
+    caches.match(event.request).then(function(response) {
+      if (response) {
+        // 添加压缩响应头
+        const headers = new Headers(response.headers);
+        headers.set('Content-Encoding', 'gzip');
+        
+        return new Response(response.body, {
+          status: response.status,
+          statusText: response.statusText,
+          headers: headers
+        });
+      }
+      return fetch(event.request);
+    })
+  );
+});
+```
+
+并在根目录下新建.htaccess文件
+
+```
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/plain
+  AddOutputFilterByType DEFLATE text/html
+  AddOutputFilterByType DEFLATE text/xml
+  AddOutputFilterByType DEFLATE text/css
+  AddOutputFilterByType DEFLATE application/xml
+  AddOutputFilterByType DEFLATE application/xhtml+xml
+  AddOutputFilterByType DEFLATE application/rss+xml
+  AddOutputFilterByType DEFLATE application/javascript
+  AddOutputFilterByType DEFLATE application/x-javascript
+</IfModule>
+```
 
 在本次配置中我简单的设置了一点缓存文件，你可以继续增加，只能增加文件路径，不可以是文件夹
 

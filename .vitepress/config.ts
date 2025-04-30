@@ -264,6 +264,15 @@ export default defineConfig({
               ]
             },
             {
+              text: '说说卡片',
+              items: [
+                {
+                  text: '配置',
+                  link: '/guide/shuoshuo'
+                }
+              ]
+            },
+            {
               text: '音效效果',
               items: [
                 {
